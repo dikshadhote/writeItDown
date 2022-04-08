@@ -1,0 +1,27 @@
+.hero-img {
+  height: 70vh;
+}
+
+.hero-desc {
+  width: 40rem;
+}
+
+.btn-join {
+  margin-top: 2rem;
+}
+
+.btn-join:hover {
+  background-color: black;
+  color: var(--primary-color);
+}
+.hero-container {
+  margin-top: 5rem;
+}
+
+.sign-up {
+  cursor: pointer;
+}
+
+.sign-up:hover {
+  color: var(--primary-color);
+}

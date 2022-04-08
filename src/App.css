@@ -1,51 +1,29 @@
-.App {
-  text-align: center;
+@import "https://dreamui-demo.netlify.app/dreamui-v1.css";
+@import "https://dreamui-v2.netlify.app/dreamui-v1.css";
+@import "./components/Landing/Landing.css";
+:root {
+  --primary-ocean-color: #10d8df;
+  --black-light-shade: #303030;
+  --black-dark-background: #282828;
+  --gray-text: #f1e5e5a6;
+  --white-text: rgb(228, 217, 217);
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body {
+  background-color: var(--black-dark-background);
+}
+.ocean-color-text {
+  color: var(--primary-ocean-color);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.ocean-color-bg {
+  background-color: var(--primary-ocean-color);
 }
 
-.App-header {
-  background-color: #22201c;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  color: white;
+.gray-text-note {
+  color: var(--gray-text);
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-.brand-title {
-  font-size: 3rem;
-  color: #d9d9d9;
-}
-
-.brand-title span {
-  color: #ffde59;
-}
-
-.brand-description {
-  font-size: 1.4rem;
-}
-
-.links {
-  display: flex;
-}
-
-.links a {
-  color: #d9d9d9;
-  font-size: 1.2rem;
-  margin: 1rem;
+.white-text-note {
+  color: var(--white-text);
 }
