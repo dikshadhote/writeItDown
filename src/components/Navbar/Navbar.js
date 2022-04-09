@@ -9,8 +9,8 @@ export default function Navbar() {
           <h3 className="mr-4 aqua-color">Write it down!</h3>
         </div>
         <div className="nav-items">
-          <a href="#navigation" className="black-text-color">
-            <span className="material-icons ml-1 aqua-color" title="account">
+          <a className="black-text-color">
+            <span className="material-icons ml-1 aqua-color" title="theme">
               account_circle
             </span>
           </a>
