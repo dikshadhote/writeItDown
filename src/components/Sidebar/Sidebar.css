@@ -1,0 +1,17 @@
+.sidebar-width {
+  width: 10rem;
+  height: 100vh;
+  background-color: var(--black-light-shade);
+}
+
+.icon-margin {
+  margin-top: 6px;
+}
+
+.link-active {
+  color: var(--primary-color);
+}
+
+.link-inactive {
+  color: var(--text-white-color);
+}

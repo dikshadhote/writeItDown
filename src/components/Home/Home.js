@@ -1,5 +1,10 @@
 import React from "react";
+import Sidebar from "../Sidebar/Sidebar";
 
 export default function Home() {
-  return <div>Home</div>;
+  return (
+    <div className="white-text-color">
+      <Sidebar />
+    </div>
+  );
 }
