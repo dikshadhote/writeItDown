@@ -1,6 +1,6 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
-import { Landing, Login, Signup } from "../components/components";
+import { Landing, Login, Signup } from "../components";
 
 export default function Router() {
   return (
