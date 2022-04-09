@@ -1,6 +1,7 @@
 @import "https://dreamui-demo.netlify.app/dreamui-v1.css";
 @import "https://dreamui-v2.netlify.app/dreamui-v1.css";
 @import "./components/Landing/Landing.css";
+@import "./components/Sidebar/Sidebar.css";
 :root {
   --primary-ocean-color: #10d8df;
   --black-light-shade: #303030;
@@ -26,4 +27,8 @@ body {
 
 .white-text-note {
   color: var(--white-text);
+}
+
+.cursor-pointer {
+  cursor: pointer;
 }
