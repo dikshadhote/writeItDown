@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Sidebar from "../Sidebar/Sidebar";
 import { BsPinAngleFill } from "react-icons/bs";
 import { MdOutlineLabel, MdColorLens, MdPriorityHigh } from "react-icons/md";
@@ -7,7 +7,9 @@ import { useNote } from "../../Context/notes-context";
 export default function Home() {
   const { noteState, noteDispatch } = useNote();
   const isPin = noteState.isPin;
-
+  const [label, setLabel] = useState("");
+  console.log(noteState.addLabel);
+  console.log(label);
   return (
     <div className="white-text-color d-grid ">
       <Sidebar />
@@ -81,19 +83,34 @@ export default function Home() {
           </div>
           <div className="box-shadow border-radius add-label p-1">
             <p className="font-weight-bold ml-1">Label</p>
-            <input
-              className="white-text-color mt-1 ml-1 input-label fs-3"
-              placeholder="Add label"
-              onChange={(e) => {
-                let timer = setTimeout(() => {
+            <div className="d-flex align-items-center">
+              <input
+                className="white-text-color mt-1 ml-1 input-label fs-3"
+                placeholder="Add label"
+                onChange={(e) => {
+                  let timer = setTimeout(() => {
+                    if (e.target.value !== "") {
+                      setLabel(e.target.value);
+                    }
+                    clearTimeout(timer);
+                  }, 2000);
+                }}
+              />
+              <button
+                className="cursor-pointer white-text-color fs-1 label-btn  btn-link btn-link-primary border-radius mt-1"
+                title="Add Label"
+                type="submit"
+                onClick={(e) => {
+                  e.preventDefault();
                   noteDispatch({
-                    type: "SET_TITLE",
-                    payload: e.target.value,
+                    type: "SET_LABEL",
+                    payload: label,
                   });
-                  clearTimeout(timer);
-                }, 5000);
-              }}
-            />
+                }}
+              >
+                ADD
+              </button>
+            </div>
           </div>
         </div>
       </div>
