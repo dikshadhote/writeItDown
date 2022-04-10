@@ -13,7 +13,6 @@
 
 body {
   background-color: var(--black-dark-background);
-  color: #f1e5e5a6;
 }
 .ocean-color-text {
   color: var(--primary-ocean-color);
