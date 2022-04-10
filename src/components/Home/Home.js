@@ -2,8 +2,12 @@ import React from "react";
 import Sidebar from "../Sidebar/Sidebar";
 import { BsPinAngleFill } from "react-icons/bs";
 import { MdOutlineLabel, MdColorLens, MdPriorityHigh } from "react-icons/md";
+import { useNote } from "../../Context/notes-context";
 
 export default function Home() {
+  const { noteDispatch } = useNote();
+  // console.log(value);
+
   return (
     <div className="white-text-color d-grid ">
       <Sidebar />
@@ -13,7 +17,15 @@ export default function Home() {
             <input
               className="input-create-note white-text-color fs-2"
               placeholder="Title"
-              onChange={(e) => console.log(e.target.value)}
+              onChange={(e) => {
+                let timer = setTimeout(() => {
+                  noteDispatch({
+                    type: "SET_TITLE",
+                    payload: e.target.value,
+                  });
+                  clearTimeout(timer);
+                }, 5000);
+              }}
             />
             <BsPinAngleFill
               className="white-text-color cursor-pointer"
@@ -24,7 +36,15 @@ export default function Home() {
             <input
               className="input-create-note input-desc white-text-color fs-2"
               placeholder="Add note here..."
-              onChange={(e) => console.log(e.target.value)}
+              onChange={(e) => {
+                let timer = setTimeout(() => {
+                  noteDispatch({
+                    type: "SET_DESCRIPTION",
+                    payload: e.target.value,
+                  });
+                  clearTimeout(timer);
+                }, 5000);
+              }}
             />
           </div>
           <div className="d-flex flex-justify-around mt-1 align-items-center">
