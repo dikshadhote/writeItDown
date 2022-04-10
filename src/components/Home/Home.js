@@ -85,7 +85,12 @@ export default function Home() {
             </a>
           </div>
           <div className={showLabel ? "show-label" : "hide-label"}>
-            <p className="font-weight-bold ml-1">Label</p>
+            <div className="d-flex flex-justify-space-between">
+              <p className="font-weight-bold ml-1">Label</p>
+              <p className="cursor-pointer" onClick={() => setShowLabel(false)}>
+                X
+              </p>
+            </div>
             <div className="d-flex align-items-center">
               <input
                 className="white-text-color mt-1 ml-1 input-label fs-3"
