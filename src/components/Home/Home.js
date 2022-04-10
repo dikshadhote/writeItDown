@@ -8,8 +8,8 @@ export default function Home() {
   const { noteState, noteDispatch } = useNote();
   const isPin = noteState.isPin;
   const [label, setLabel] = useState("");
+  const [showLabel, setShowLabel] = useState(false);
   console.log(noteState.addLabel);
-  console.log(label);
   return (
     <div className="white-text-color d-grid ">
       <Sidebar />
@@ -59,6 +59,9 @@ export default function Home() {
             <MdOutlineLabel
               className="fs-3 white-text-color cursor-pointer"
               title="Add label"
+              onClick={() => {
+                setShowLabel(true);
+              }}
             />
             <MdColorLens
               className="fs-3  white-text-color cursor-pointer"
@@ -81,7 +84,7 @@ export default function Home() {
               CLEAR
             </a>
           </div>
-          <div className="box-shadow border-radius add-label p-1">
+          <div className={showLabel ? "show-label" : "hide-label"}>
             <p className="font-weight-bold ml-1">Label</p>
             <div className="d-flex align-items-center">
               <input

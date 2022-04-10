@@ -58,3 +58,17 @@ input:focus-visible {
 .label-btn:hover {
   color: var(--primary-color);
 }
+
+.show-label {
+  box-shadow: 0 6px 1.25rem 0 var(--gray-text);
+  padding: 8px;
+  width: 10rem;
+  height: 5rem;
+  background-color: var(--black-light-shade);
+  border-radius: 5px;
+  border: 1px solid transparent;
+}
+
+.hide-label {
+  display: none;
+}
