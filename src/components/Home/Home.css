@@ -38,8 +38,8 @@ input:focus-visible {
 }
 
 .add-label {
-  width: 8rem;
-  height: 4rem;
+  width: 10rem;
+  height: 5rem;
   background-color: var(--black-light-shade);
 }
 
@@ -48,4 +48,13 @@ input:focus-visible {
   background-color: var(--black-light-shade);
   padding: 3px;
   border: 1px solid transparent;
+}
+
+.label-btn {
+  background-color: transparent;
+  text-decoration: underline;
+}
+
+.label-btn:hover {
+  color: var(--primary-color);
 }
