@@ -79,6 +79,22 @@ export default function Home() {
               CLEAR
             </a>
           </div>
+          <div className="box-shadow border-radius add-label p-1">
+            <p className="font-weight-bold ml-1">Label</p>
+            <input
+              className="white-text-color mt-1 ml-1 input-label fs-3"
+              placeholder="Add label"
+              onChange={(e) => {
+                let timer = setTimeout(() => {
+                  noteDispatch({
+                    type: "SET_TITLE",
+                    payload: e.target.value,
+                  });
+                  clearTimeout(timer);
+                }, 5000);
+              }}
+            />
+          </div>
         </div>
       </div>
     </div>

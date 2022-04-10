@@ -32,3 +32,20 @@ input:focus-visible {
   border-radius: 5px;
   border: 1px solid transparent;
 }
+
+.box-shadow {
+  box-shadow: 0 6px 1.25rem 0 var(--gray-text);
+}
+
+.add-label {
+  width: 8rem;
+  height: 4rem;
+  background-color: var(--black-light-shade);
+}
+
+.input-label {
+  width: 80%;
+  background-color: var(--black-light-shade);
+  padding: 3px;
+  border: 1px solid transparent;
+}
