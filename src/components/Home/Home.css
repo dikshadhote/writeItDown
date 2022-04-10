@@ -1,0 +1,34 @@
+.d-grid {
+  display: grid;
+  grid-template-columns: 1fr 5.5fr;
+  grid-column-gap: 10px;
+}
+
+.create-note-container {
+  width: 35rem;
+  height: 12rem;
+  border-radius: 5px;
+  border: 1px solid var(--gray-text);
+  margin-top: 3rem;
+  box-shadow: 0 6px 1.25rem 0 var(--gray-text);
+}
+
+.input-create-note {
+  padding: 5px;
+  background-color: var(--black-light-shade);
+  border: 1px solid transparent;
+  width: 95%;
+}
+
+input:focus-visible {
+  outline: none;
+}
+
+.input-create-note.input-desc {
+  height: 5rem;
+}
+
+.border-radius {
+  border-radius: 5px;
+  border: 1px solid transparent;
+}

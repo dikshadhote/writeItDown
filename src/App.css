@@ -2,6 +2,7 @@
 @import "https://dreamui-v2.netlify.app/dreamui-v1.css";
 @import "./components/Landing/Landing.css";
 @import "./components/Sidebar/Sidebar.css";
+@import "./components/Home/Home.css";
 :root {
   --primary-ocean-color: #10d8df;
   --black-light-shade: #303030;
