@@ -5,8 +5,8 @@ import { MdOutlineLabel, MdColorLens, MdPriorityHigh } from "react-icons/md";
 import { useNote } from "../../Context/notes-context";
 
 export default function Home() {
-  const { noteDispatch } = useNote();
-  // console.log(value);
+  const { noteState, noteDispatch } = useNote();
+  const isPin = noteState.isPin;
 
   return (
     <div className="white-text-color d-grid ">
@@ -30,6 +30,12 @@ export default function Home() {
             <BsPinAngleFill
               className="white-text-color cursor-pointer"
               title="Pin this note"
+              onClick={() =>
+                noteDispatch({
+                  type: "SET_PIN",
+                  payload: !isPin,
+                })
+              }
             />
           </div>
           <div className="mt-1">
