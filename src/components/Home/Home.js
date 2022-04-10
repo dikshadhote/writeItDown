@@ -13,6 +13,7 @@ export default function Home() {
             <input
               className="input-create-note white-text-color fs-2"
               placeholder="Title"
+              onChange={(e) => console.log(e.target.value)}
             />
             <BsPinAngleFill
               className="white-text-color cursor-pointer"
@@ -20,7 +21,11 @@ export default function Home() {
             />
           </div>
           <div className="mt-1">
-            <input className="input-create-note input-desc white-text-color fs-2" />
+            <input
+              className="input-create-note input-desc white-text-color fs-2"
+              placeholder="Add note here..."
+              onChange={(e) => console.log(e.target.value)}
+            />
           </div>
           <div className="d-flex flex-justify-around mt-1 align-items-center">
             <MdOutlineLabel
@@ -41,6 +46,12 @@ export default function Home() {
             >
               ADD
             </button>
+            <a
+              className="p-1 font-weight-bold cursor-pointer border-radius cursor-pointer"
+              title="Clear data"
+            >
+              CLEAR
+            </a>
           </div>
         </div>
       </div>
