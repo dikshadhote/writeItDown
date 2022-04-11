@@ -107,14 +107,42 @@ export default function Home() {
                 </div>
               </div>
             </div>
-
-            <MdColorLens
-              className="fs-3  white-text-color cursor-pointer"
-              title="Select color"
-              onClick={() => {
-                setShowPallete(true);
-              }}
-            />
+            <div className="pos-relative">
+              <MdColorLens
+                className="fs-3  white-text-color cursor-pointer"
+                title="Select color"
+                onClick={() => {
+                  setShowPallete(true);
+                }}
+              />
+              <div
+                className={
+                  showPallete
+                    ? "d-flex color-pallete-container flex-column"
+                    : "hide-label"
+                }
+              >
+                <div className="d-flex flex-justify-space-between">
+                  <p className="font-weight-bold ml-1">Color</p>
+                  <p
+                    className="cursor-pointer"
+                    onClick={() => setShowPallete(false)}
+                  >
+                    X
+                  </p>
+                </div>
+                <div className="d-flex flex-row flex-wrap mt-1 ml-1">
+                  <div className="color-container black-bg cursor-pointer"></div>
+                  <div className="color-container light-pink-bg cursor-pointer "></div>
+                  <div className="color-container dark-pink-bg cursor-pointer "></div>
+                  <div className="color-container violet-bg cursor-pointer "></div>
+                  <div className="color-container aqua-blue-bg cursor-pointer"></div>
+                  <div className="color-container light-yellow-bg cursor-pointer"></div>
+                  <div className="color-container dark-yellow-bg cursor-pointer "></div>
+                  <div className="color-container light-green-bg cursor-pointer"></div>
+                </div>
+              </div>
+            </div>
             <div className="pos-relative">
               <MdPriorityHigh
                 className="fs-3  white-text-color cursor-pointer"
@@ -173,34 +201,6 @@ export default function Home() {
             >
               CLEAR
             </a>
-          </div>
-
-          <div
-            className={
-              showPallete
-                ? "d-flex color-pallete-container flex-column"
-                : "hide-label"
-            }
-          >
-            <div className="d-flex flex-justify-space-between">
-              <p className="font-weight-bold ml-1">Color</p>
-              <p
-                className="cursor-pointer"
-                onClick={() => setShowPallete(false)}
-              >
-                X
-              </p>
-            </div>
-            <div className="d-flex flex-row flex-wrap mt-1 ml-1">
-              <div className="color-container black-bg cursor-pointer"></div>
-              <div className="color-container light-pink-bg cursor-pointer "></div>
-              <div className="color-container dark-pink-bg cursor-pointer "></div>
-              <div className="color-container violet-bg cursor-pointer "></div>
-              <div className="color-container aqua-blue-bg cursor-pointer"></div>
-              <div className="color-container light-yellow-bg cursor-pointer"></div>
-              <div className="color-container dark-yellow-bg cursor-pointer "></div>
-              <div className="color-container light-green-bg cursor-pointer"></div>
-            </div>
           </div>
         </div>
       </div>

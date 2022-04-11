@@ -84,7 +84,9 @@ input:focus-visible {
   border-radius: 5px;
   border: 1px solid transparent;
   box-shadow: 0 6px 1.25rem 0 var(--gray-text);
-  margin-left: 5rem;
+  position: absolute;
+  top: 2.3rem;
+  left: -3rem;
 }
 .color-container {
   height: 1.5rem;
