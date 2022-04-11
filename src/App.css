@@ -76,3 +76,7 @@ body {
 .black-bg {
   background-color: var(--black-dark-background);
 }
+
+.pos-relative {
+  position: relative;
+}

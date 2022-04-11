@@ -90,3 +90,14 @@ input:focus-visible {
   border: 1px solid var(--gray-text);
   margin: 5px;
 }
+
+.priority-container {
+  width: 8rem;
+  background-color: var(--black-light-shade);
+  padding: 5px;
+  border-radius: 5px;
+  box-shadow: 0 6px 1.25rem 0 var(--gray-text);
+  position: absolute;
+  top: 2.3rem;
+  left: -3rem;
+}

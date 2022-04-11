@@ -9,7 +9,9 @@ export default function Home() {
   const isPin = noteState.isPin;
   const [label, setLabel] = useState("");
   const [showLabel, setShowLabel] = useState(false);
+  const [showPallete, setShowPallete] = useState(false);
   console.log(noteState.addLabel);
+  let priorities = ["High", "Low", "Medium"];
   return (
     <div className="white-text-color d-grid ">
       <Sidebar />
@@ -66,11 +68,38 @@ export default function Home() {
             <MdColorLens
               className="fs-3  white-text-color cursor-pointer"
               title="Select color"
+              onClick={() => {
+                setShowPallete(true);
+              }}
             />
-            <MdPriorityHigh
-              className="fs-3  white-text-color cursor-pointer"
-              title="Add label"
-            />
+            <div className="pos-relative">
+              <MdPriorityHigh
+                className="fs-3  white-text-color cursor-pointer"
+                title="Add priority"
+              />
+              <div className="list-style-none priority-container">
+                {priorities.map((currPriority) => {
+                  return (
+                    <li key={currPriority}>
+                      <input
+                        id={currPriority}
+                        className="form-check-input"
+                        type="radio"
+                        name="rating"
+                        checked={noteState.priority === currPriority}
+                        onChange={() =>
+                          noteDispatch({
+                            type: "SET_PRIORITY",
+                            payload: currPriority,
+                          })
+                        }
+                      />
+                      <label htmlFor={currPriority}>{currPriority}</label>
+                    </li>
+                  );
+                })}
+              </div>
+            </div>
             <button
               className="p-1 font-weight-bold cursor-pointer border-radius"
               title="Add Note"
@@ -120,8 +149,23 @@ export default function Home() {
               </button>
             </div>
           </div>
-          <div>
-            <div className="color-pallete-container d-flex flex-row flex-wrap">
+          <div
+            className={
+              showPallete
+                ? "d-flex color-pallete-container flex-column"
+                : "hide-label"
+            }
+          >
+            <div className="d-flex flex-justify-space-between">
+              <p className="font-weight-bold ml-1">Color</p>
+              <p
+                className="cursor-pointer"
+                onClick={() => setShowPallete(false)}
+              >
+                X
+              </p>
+            </div>
+            <div className="d-flex flex-row flex-wrap mt-1 ml-1">
               <div className="color-container black-bg cursor-pointer"></div>
               <div className="color-container light-pink-bg cursor-pointer "></div>
               <div className="color-container dark-pink-bg cursor-pointer "></div>
