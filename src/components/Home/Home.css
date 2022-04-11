@@ -68,6 +68,9 @@ input:focus-visible {
   background-color: var(--black-light-shade);
   border-radius: 5px;
   border: 1px solid transparent;
+  position: absolute;
+  top: 2rem;
+  left: -3rem;
 }
 
 .hide-label {
