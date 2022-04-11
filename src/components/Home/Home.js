@@ -10,6 +10,7 @@ export default function Home() {
   const [label, setLabel] = useState("");
   const [showLabel, setShowLabel] = useState(false);
   const [showPallete, setShowPallete] = useState(false);
+  const [showPriority, setShowPriority] = useState(false);
   console.log(noteState.addLabel);
   let priorities = ["High", "Low", "Medium"];
   return (
@@ -19,7 +20,7 @@ export default function Home() {
         <div className="create-note-container p-1">
           <div className="d-flex flex-justify-space-between align-items-center">
             <input
-              className="input-create-note white-text-color fs-2"
+              className="input-create-note gray-text-note  fs-2"
               placeholder="Title"
               onChange={(e) => {
                 let timer = setTimeout(() => {
@@ -76,8 +77,26 @@ export default function Home() {
               <MdPriorityHigh
                 className="fs-3  white-text-color cursor-pointer"
                 title="Add priority"
+                onClick={() => {
+                  setShowPriority(true);
+                }}
               />
-              <div className="list-style-none priority-container">
+              <div
+                className={
+                  showPriority
+                    ? "list-style-none priority-container"
+                    : "hide-label"
+                }
+              >
+                <div className="d-flex flex-justify-space-between">
+                  <p className="font-weight-bold ml-1 mb-1">Priority</p>
+                  <p
+                    className="cursor-pointer"
+                    onClick={() => setShowPriority(false)}
+                  >
+                    X
+                  </p>
+                </div>
                 {priorities.map((currPriority) => {
                   return (
                     <li key={currPriority}>
