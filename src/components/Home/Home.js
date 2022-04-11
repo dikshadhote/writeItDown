@@ -120,6 +120,18 @@ export default function Home() {
               </button>
             </div>
           </div>
+          <div>
+            <div className="color-pallete-container d-flex flex-row flex-wrap">
+              <div className="color-container black-bg cursor-pointer"></div>
+              <div className="color-container light-pink-bg cursor-pointer "></div>
+              <div className="color-container dark-pink-bg cursor-pointer "></div>
+              <div className="color-container violet-bg cursor-pointer "></div>
+              <div className="color-container aqua-blue-bg cursor-pointer"></div>
+              <div className="color-container light-yellow-bg cursor-pointer"></div>
+              <div className="color-container dark-yellow-bg cursor-pointer "></div>
+              <div className="color-container light-green-bg cursor-pointer"></div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
