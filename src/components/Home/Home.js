@@ -133,13 +133,13 @@ export default function Home() {
                 </div>
                 <div className="d-flex flex-row flex-wrap mt-1 ml-1">
                   <div className="color-container black-bg cursor-pointer"></div>
-                  <div className="color-container light-pink-bg cursor-pointer "></div>
-                  <div className="color-container dark-pink-bg cursor-pointer "></div>
+                  <div className="color-container brown-bg cursor-pointer "></div>
                   <div className="color-container violet-bg cursor-pointer "></div>
-                  <div className="color-container aqua-blue-bg cursor-pointer"></div>
-                  <div className="color-container light-yellow-bg cursor-pointer"></div>
-                  <div className="color-container dark-yellow-bg cursor-pointer "></div>
-                  <div className="color-container light-green-bg cursor-pointer"></div>
+                  <div className="color-container olive-dark-bg cursor-pointer "></div>
+                  <div className="color-container blue-dark-bg cursor-pointer"></div>
+                  <div className="color-container light-blue-bg cursor-pointer"></div>
+                  <div className="color-container green-bg cursor-pointer "></div>
+                  <div className="color-container greenish-blue-bg cursor-pointer"></div>
                 </div>
               </div>
             </div>

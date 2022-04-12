@@ -9,14 +9,15 @@
   --black-dark-background: #282828;
   --gray-text: #f1e5e5a6;
   --white-text: rgb(228, 217, 217);
-  --light-pink: #ff7eb9;
-  --dark-pink: #ff32b2;
+  --brown: #5c2b29;
+  --olive-dark: #614a19;
   --violet: #5b2245;
-  --aqua-blue: #7afcff;
-  --light-yellow: #feff9c;
-  --dark-yellow: #fff740;
-  --orange: #ffa930;
-  --light-green: #74ed4b;
+  --olive-light: #635d19;
+  --blue-dark: #42275e;
+  --light-blue: #2d555e;
+  --green: #345920;
+  --greenish-blue: #16504b;
+  --violet-lighter-shade: #79305d;
 }
 
 body {
@@ -42,35 +43,31 @@ body {
   cursor: pointer;
 }
 
-.light-pink-bg {
-  background-color: var(--light-pink);
-}
-
-.dark-pink-bg {
-  background-color: var(--dark-pink);
+.brown-bg {
+  background-color: var(--brown);
 }
 
 .violet-bg {
   background-color: var(--violet);
 }
 
-.aqua-blue-bg {
-  background-color: var(--aqua-blue);
+.olive-dark-bg {
+  background-color: var(--olive-dark);
 }
 
-.light-yellow-bg {
-  background-color: var(--light-yellow);
+.blue-dark-bg {
+  background-color: var(--blue-dark);
 }
 
-.dark-yellow-bg {
-  background-color: var(--dark-yellow);
+.light-blue-bg {
+  background-color: var(--light-blue);
 }
 
-.note-orange-bg {
-  background-color: var(--orange);
+.green-bg {
+  background-color: var(--green);
 }
-.light-green-bg {
-  background-color: var(--light-green);
+.greenish-blue-bg {
+  background-color: var(--greenish-blue);
 }
 
 .black-bg {
