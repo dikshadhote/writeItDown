@@ -11,16 +11,58 @@ export default function Home() {
   const [showLabel, setShowLabel] = useState(false);
   const [showPallete, setShowPallete] = useState(false);
   const [showPriority, setShowPriority] = useState(false);
-  console.log(noteState.addLabel);
+  console.log(noteState.cardColor);
   let priorities = ["High", "Low", "Medium"];
+  let colors = [
+    { inputColor: "black-light-bg", cardColor: "black-bg" },
+    {
+      inputColor: "light-brown-bg",
+      cardColor: "brown-bg",
+    },
+    {
+      inputColor: "olive-light-bg",
+      cardColor: "olive-dark-bg",
+    },
+    {
+      inputColor: "violet-light-bg ",
+      cardColor: "violet-bg",
+    },
+    {
+      inputColor: "yellow-green-light",
+      cardColor: "yellow-green",
+    },
+    {
+      inputColor: "muddy-blue-light ",
+      cardColor: "muddy-blue",
+    },
+    {
+      inputColor: "green-light ",
+      cardColor: "green-bg",
+    },
+    {
+      inputColor: "greenish-blue-light",
+      cardColor: "greenish-blue-bg ",
+    },
+  ];
+
   return (
     <div className="white-text-color d-grid ">
       <Sidebar />
       <div className="d-flex flex-justify-center">
-        <div className="create-note-container p-1">
+        <div
+          className={
+            noteState.cardColor.cardColor
+              ? `create-note-container p-1 ${noteState.cardColor.cardColor}`
+              : "create-note-container p-1 black-bg"
+          }
+        >
           <div className="d-flex flex-justify-space-between align-items-center">
             <input
-              className="input-create-note gray-text-note  fs-2"
+              className={
+                noteState.cardColor.inputColor
+                  ? `input-create-note gray-text-note  fs-2 ${noteState.cardColor.inputColor}`
+                  : "input-create-note gray-text-note fs-2 black-light-bg"
+              }
               placeholder="Title"
               onChange={(e) => {
                 let timer = setTimeout(() => {
@@ -45,7 +87,11 @@ export default function Home() {
           </div>
           <div className="mt-1">
             <input
-              className="input-create-note input-desc white-text-color fs-2"
+              className={
+                noteState.cardColor.inputColor
+                  ? `input-create-note input-desc white-text-color fs-2 ${noteState.cardColor.inputColor}`
+                  : "input-create-note input-desc white-text-color fs-2 black-light-bg"
+              }
               placeholder="Add note here..."
               onChange={(e) => {
                 let timer = setTimeout(() => {
@@ -132,14 +178,23 @@ export default function Home() {
                   </p>
                 </div>
                 <div className="d-flex flex-row flex-wrap mt-1 ml-1">
-                  <div className="color-container black-bg cursor-pointer"></div>
-                  <div className="color-container brown-bg cursor-pointer "></div>
-                  <div className="color-container violet-bg cursor-pointer "></div>
-                  <div className="color-container olive-dark-bg cursor-pointer "></div>
-                  <div className="color-container blue-dark-bg cursor-pointer"></div>
-                  <div className="color-container light-blue-bg cursor-pointer"></div>
-                  <div className="color-container green-bg cursor-pointer "></div>
-                  <div className="color-container greenish-blue-bg cursor-pointer"></div>
+                  {colors.map((item) => {
+                    return (
+                      <div
+                        className={`color-container  cursor-pointer ${item.cardColor}`}
+                        key={item.cardColor}
+                        onClick={() =>
+                          noteDispatch({
+                            type: "SET_CARD_COLOR",
+                            payload: {
+                              inputColor: item.inputColor,
+                              cardColor: item.cardColor,
+                            },
+                          })
+                        }
+                      ></div>
+                    );
+                  })}
                 </div>
               </div>
             </div>
