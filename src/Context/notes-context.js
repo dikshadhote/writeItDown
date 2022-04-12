@@ -19,6 +19,7 @@ const noteReducer = (noteState, action) => {
     case "SET_PIN":
       return { ...noteState, isPin: action.payload };
     case "SET_CARD_COLOR":
+      return { ...noteState, cardColor: action.payload };
 
     case "SET_LABEL":
       if (repeatLabel) {
@@ -38,7 +39,7 @@ const noteReducer = (noteState, action) => {
         description: "",
         isPin: false,
         addLabel: [],
-        cardColor: "",
+        cardColor: {},
         priority: "",
       };
     default:
@@ -52,7 +53,7 @@ const NoteProvider = ({ children }) => {
     description: "",
     isPin: false,
     addLabel: [],
-    cardColor: "",
+    cardColor: {},
     priority: "",
   });
 
