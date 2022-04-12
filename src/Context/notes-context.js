@@ -32,6 +32,7 @@ const noteReducer = (noteState, action) => {
         addLabel: [...noteState.addLabel, action.payload],
       };
     case "SET_PRIORITY":
+      return { ...noteState, priority: action.payload };
 
     case "CLEAR_DATA":
       return {
