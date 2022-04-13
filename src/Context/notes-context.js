@@ -5,7 +5,6 @@ const NoteContext = createContext();
 const useNote = () => useContext(NoteContext);
 
 const noteReducer = (noteState, action) => {
-  console.log(action);
   //   sort out unique label
   const repeatLabel = noteState.addLabel.some(
     (label) => label === action.payload

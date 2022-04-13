@@ -11,7 +11,6 @@ export default function Home() {
   const [showLabel, setShowLabel] = useState(false);
   const [showPallete, setShowPallete] = useState(false);
   const [showPriority, setShowPriority] = useState(false);
-  console.log(noteState.priority);
   let priorities = ["High", "Low", "Medium"];
   let colors = [
     { inputColor: "black-light-bg", cardColor: "black-bg" },
