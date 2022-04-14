@@ -8,6 +8,7 @@ import {
   Archieve,
   Label,
   Trash,
+  MockmanComponent,
 } from "../components";
 
 export default function Router() {
@@ -20,6 +21,7 @@ export default function Router() {
       <Route path="/archieve" element={<Archieve />} />
       <Route path="/label" element={<Label />} />
       <Route path="/trash" element={<Trash />} />
+      <Route path="/mockman" element={<MockmanComponent />} />
     </Routes>
   );
 }
