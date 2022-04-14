@@ -9,27 +9,21 @@ export default function Login() {
             <h3 className="white-text-color">Login</h3>
           </div>
           <div className=" mt-2 ml-1 d-flex flex-column">
-            <label
-              htmlFor="input-email"
-              className="ml-2 input-label white-text-color"
-            >
+            <label htmlFor="input-email" className="ml-2  white-text-color">
               Email
             </label>
             <input
-              className="input input-login"
+              className="input input-login black-light-bg white-text-color "
               id="input-email"
               placeholder="you@dreamstore.com"
             />
           </div>
           <div className=" mt-2 ml-1 d-flex flex-column">
-            <label
-              htmlFor="input-password"
-              className="ml-2 input-label white-text-color"
-            >
+            <label htmlFor="input-password" className="ml-2 white-text-color ">
               Password
             </label>
             <input
-              className="input input-login"
+              className="input input-login black-light-bg white-text-color"
               id="input-password"
               placeholder="*******"
             />
