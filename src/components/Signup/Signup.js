@@ -9,6 +9,11 @@ export default function Signup() {
     password: "",
   });
 
+  const signUp = async (signIn) => {
+    const { data } = await signUpHandler(signIn);
+    localStorage.setItem("token", data.encodedToken);
+  };
+
   return (
     <div className="d-flex flex-justify-center align-items-center">
       <div className="card nav-yellow-shadow  login-container flex-column">
@@ -18,7 +23,7 @@ export default function Signup() {
         <form
           onSubmit={(e) => {
             e.preventDefault();
-            signUpHandler(signIn);
+            signUp(signIn);
           }}
         >
           <div className=" mt-2 ml-1 d-flex flex-column">
