@@ -3,6 +3,8 @@
 @import "./components/Landing/Landing.css";
 @import "./components/Sidebar/Sidebar.css";
 @import "./components/Home/Home.css";
+@import "./components//Login/Login.css";
+
 :root {
   --primary-ocean-color: #10d8df;
   --black-light-shade: #303030;
