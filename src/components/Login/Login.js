@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { logInHandler } from "../../ApiServices/ApiServices";
+import { useAuth } from "../../Context/auth-context";
 export default function Login() {
   const [login, setLogin] = useState({
     email: "",
     password: "",
   });
 
+  const { setUser } = useAuth();
   const navigateTo = useNavigate();
   const guestCredential = {
     email: "adarshbalika@gmail.com",
@@ -20,6 +22,10 @@ export default function Login() {
         "token",
         JSON.stringify(data.encodedToken)
       );
+      setUser({
+        isUserLoggedIn: true,
+        token: JSON.stringify(data.encodedToken),
+      });
       navigateTo("/home");
     }
   };
