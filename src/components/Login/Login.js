@@ -1,18 +1,23 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { logInHandler } from "../../ApiServices/ApiServices";
 export default function Login() {
   const [login, setLogin] = useState({
     email: "",
     password: "",
   });
+
+  const navigateTo = useNavigate();
   const guestCredential = {
     email: "adarshbalika@gmail.com",
     password: "adarshBalika123",
   };
   const loggedIn = async (login) => {
-    // login only available for current users in db
+    // login only available for current users in db i.e. guest
     const { data, status } = await logInHandler(login);
+    if (status === 200) {
+      navigateTo("/home");
+    }
   };
 
   return (
