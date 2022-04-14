@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { signUpHandler } from "../../ApiServices/ApiServices";
 export default function Signup() {
   const [signIn, setSignin] = useState({
@@ -8,10 +8,13 @@ export default function Signup() {
     lastName: "",
     password: "",
   });
-
+  const navigateTo = useNavigate();
   const signUp = async (signIn) => {
-    const { data } = await signUpHandler(signIn);
-    localStorage.setItem("token", data.encodedToken);
+    const { data, status } = await signUpHandler(signIn);
+    if (status === 201) {
+      navigateTo("/login");
+      localStorage.setItem("token", data.encodedToken);
+    }
   };
   console.log(signIn);
   return (
