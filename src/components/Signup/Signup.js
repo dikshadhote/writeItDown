@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { signUpHandler } from "../../Api Services/ApiServices";
+import { signUpHandler } from "../../ApiServices/ApiServices";
 export default function Signup() {
   const [signIn, setSignin] = useState({
     email: "",
