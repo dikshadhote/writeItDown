@@ -13,7 +13,7 @@ export default function Signup() {
     const { data } = await signUpHandler(signIn);
     localStorage.setItem("token", data.encodedToken);
   };
-
+  console.log(signIn);
   return (
     <div className="d-flex flex-justify-center align-items-center">
       <div className="card nav-yellow-shadow  login-container flex-column">
@@ -38,7 +38,7 @@ export default function Signup() {
                 let timer = setTimeout(() => {
                   setSignin({ ...signIn, firstName: e.target.value });
                   clearTimeout(timer);
-                }, 5000);
+                }, 1000);
               }}
             />
           </div>
@@ -54,7 +54,7 @@ export default function Signup() {
                 let timer = setTimeout(() => {
                   setSignin({ ...signIn, lastName: e.target.value });
                   clearTimeout(timer);
-                }, 5000);
+                }, 1000);
               }}
             />
           </div>
@@ -71,7 +71,7 @@ export default function Signup() {
                 let timer = setTimeout(() => {
                   setSignin({ ...signIn, email: e.target.value });
                   clearTimeout(timer);
-                }, 5000);
+                }, 1000);
               }}
             />
           </div>
@@ -88,7 +88,7 @@ export default function Signup() {
                 let timer = setTimeout(() => {
                   setSignin({ ...signIn, password: e.target.value });
                   clearTimeout(timer);
-                }, 5000);
+                }, 1000);
               }}
             />
           </div>
