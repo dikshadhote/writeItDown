@@ -1,6 +1,4 @@
-import { createContext, useContext } from "react";
-import { useState } from "react/cjs/react.production.min";
-import { signUpHandler } from "../ApiServices/ApiServices";
+import { createContext, useContext, useState } from "react";
 const AuthContext = createContext();
 
 const useAuth = () => useContext(AuthContext);
@@ -8,10 +6,15 @@ const token = localStorage.getItem("token");
 
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState({
-    isUserLoggedIn: token ? true : false,
-    token: token,
+    isUserLoggedIn: false,
+    token: "",
   });
+  console.log(user);
   return (
-    <AuthContext.Provider value={{ user }}>{children}</AuthContext.Provider>
+    <AuthContext.Provider value={{ user, setUser }}>
+      {children}
+    </AuthContext.Provider>
   );
 };
+
+export { useAuth, AuthProvider };
