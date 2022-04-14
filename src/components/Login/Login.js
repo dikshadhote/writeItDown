@@ -1,14 +1,18 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-
+import { logInHandler } from "../../ApiServices/ApiServices";
 export default function Login() {
   const [login, setLogin] = useState({
     email: "",
     password: "",
   });
-
-  const loggedIn = (login) => {
-    console.log(login);
+  const guestCredential = {
+    email: "adarshbalika@gmail.com",
+    password: "adarshBalika123",
+  };
+  const loggedIn = async (login) => {
+    // login only available for current users in db
+    const { data, status } = await logInHandler(login);
   };
 
   return (
@@ -51,9 +55,8 @@ export default function Login() {
                 placeholder="*******"
                 type="password"
                 onChange={(e) => {
-                  console.log("sjhjsh");
                   let timer = setTimeout(() => {
-                    setLogin({ ...login, password: "hello" });
+                    setLogin({ ...login, password: e.target.value });
                     clearTimeout(timer);
                   }, 1000);
                 }}
@@ -82,6 +85,17 @@ export default function Login() {
               className="btn orange-bg login-button ml-3 font-weight-bold"
             >
               Login
+            </button>
+
+            <button
+              type="submit"
+              className="btn orange-bg login-button ml-3 font-weight-bold"
+              onClick={(e) => {
+                e.preventDefault();
+                loggedIn(guestCredential);
+              }}
+            >
+              Login as Guest
             </button>
           </form>
           <div className="d-flex flex-justify-center align-items-center">
