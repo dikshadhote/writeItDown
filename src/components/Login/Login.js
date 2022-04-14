@@ -16,6 +16,10 @@ export default function Login() {
     // login only available for current users in db i.e. guest
     const { data, status } = await logInHandler(login);
     if (status === 200) {
+      const token = localStorage.setItem(
+        "token",
+        JSON.stringify(data.encodedToken)
+      );
       navigateTo("/home");
     }
   };

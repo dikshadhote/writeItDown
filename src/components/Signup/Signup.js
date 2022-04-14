@@ -10,13 +10,11 @@ export default function Signup() {
   });
   const navigateTo = useNavigate();
   const signUp = async (signIn) => {
-    const { data, status } = await signUpHandler(signIn);
+    const { status } = await signUpHandler(signIn);
     if (status === 201) {
       navigateTo("/login");
-      localStorage.setItem("token", data.encodedToken);
     }
   };
-  console.log(signIn);
   return (
     <div className="d-flex flex-justify-center align-items-center">
       <div className="card nav-yellow-shadow  login-container flex-column">
