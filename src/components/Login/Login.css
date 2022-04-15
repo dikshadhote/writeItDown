@@ -16,3 +16,7 @@
 .login-button {
   width: 20rem;
 }
+
+.login-button.btn-size {
+  width: 6rem;
+}
