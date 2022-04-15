@@ -8,7 +8,7 @@ export default function Login() {
     password: "",
   });
 
-  const { setAuthState } = useAuth();
+  const { authstate, setAuthState } = useAuth();
   const navigateTo = useNavigate();
   const guestCredential = {
     email: "adarshbalika@gmail.com",
@@ -18,13 +18,8 @@ export default function Login() {
     // login only available for current users in db i.e. guest
     const { data, status } = await logInHandler(login);
     if (status === 200) {
-      const token = localStorage.setItem(
-        "token",
-        JSON.stringify(data.encodedToken)
-      );
-      setAuthState({
-        isUserLoggedIn: true,
-      });
+      localStorage.setItem("token", JSON.stringify(data.encodedToken));
+      setAuthState({ ...authstate, isUserLoggedIn: true });
       navigateTo("/home");
     }
   };
