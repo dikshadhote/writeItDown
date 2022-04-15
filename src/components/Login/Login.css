@@ -1,0 +1,22 @@
+.login-container {
+  width: 28rem;
+  padding: 2rem;
+  margin: 5rem;
+  background-color: var(--black-dark-background);
+}
+
+.input-login {
+  width: 20rem;
+}
+
+.fs-small {
+  font-size: 0.9rem;
+}
+
+.login-button {
+  width: 20rem;
+}
+
+.login-button.btn-size {
+  width: 6rem;
+}
