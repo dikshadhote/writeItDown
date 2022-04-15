@@ -5,13 +5,11 @@ const useAuth = () => useContext(AuthContext);
 const token = localStorage.getItem("token");
 
 const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState({
-    isUserLoggedIn: false,
-    token: "",
+  const [authState, setAuthState] = useState({
+    isUserLoggedIn: token ? true : false,
   });
-  console.log(user);
   return (
-    <AuthContext.Provider value={{ user, setUser }}>
+    <AuthContext.Provider value={{ authState, setAuthState }}>
       {children}
     </AuthContext.Provider>
   );

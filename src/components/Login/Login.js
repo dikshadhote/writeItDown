@@ -8,7 +8,7 @@ export default function Login() {
     password: "",
   });
 
-  const { setUser } = useAuth();
+  const { setAuthState } = useAuth();
   const navigateTo = useNavigate();
   const guestCredential = {
     email: "adarshbalika@gmail.com",
@@ -22,9 +22,8 @@ export default function Login() {
         "token",
         JSON.stringify(data.encodedToken)
       );
-      setUser({
+      setAuthState({
         isUserLoggedIn: true,
-        token: JSON.stringify(data.encodedToken),
       });
       navigateTo("/home");
     }
