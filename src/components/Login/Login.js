@@ -17,11 +17,12 @@ export default function Login() {
   const loggedIn = async (login) => {
     // login only available for current users in db i.e. guest
     const { data, status } = await logInHandler(login);
-    if (status === 200) {
-      localStorage.setItem("token", JSON.stringify(data.encodedToken));
-      setAuthState({ ...authstate, isUserLoggedIn: true });
-      navigateTo("/home");
-    }
+    if (data !== undefined)
+      if (status === 200) {
+        localStorage.setItem("token", JSON.stringify(data.encodedToken));
+        setAuthState({ ...authstate, isUserLoggedIn: true });
+        navigateTo("/home");
+      }
   };
 
   return (
