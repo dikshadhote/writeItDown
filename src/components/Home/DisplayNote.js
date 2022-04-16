@@ -11,9 +11,16 @@ export default function DisplayNote() {
   return (
     <div>
       <div className="d-flex m-5 flex-wrap">
-        {noteData.map((note, idx) => {
-          const { title, isPin, description, cardColor, addLabel, priority } =
-            note;
+        {noteData.map((note) => {
+          const {
+            title,
+            isPin,
+            description,
+            cardColor,
+            addLabel,
+            priority,
+            _id,
+          } = note;
           return (
             <div
               className={
@@ -21,7 +28,7 @@ export default function DisplayNote() {
                   ? `displayNote border-radius p-1 m-2 ${cardColor.cardColor}`
                   : "displayNote border-radius p-1 m-2"
               }
-              key={idx}
+              key={_id}
             >
               <div className="d-flex flex-justify-space-between  align-items-center p-1">
                 <h5>{title}</h5>
