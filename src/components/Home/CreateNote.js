@@ -50,8 +50,12 @@ export default function CreateNote() {
             }}
           />
           <BsPinAngleFill
-            className="white-text-color cursor-pointer"
-            title="Pin this note"
+            className={
+              noteState.isPin
+                ? "aqua-color cursor-pointer"
+                : "white-text-color cursor-pointer"
+            }
+            title={noteState.isPin ? "Unpin this note" : "Pin this note"}
             onClick={() =>
               noteDispatch({
                 type: "SET_PIN",
@@ -78,6 +82,23 @@ export default function CreateNote() {
               }, 2000);
             }}
           />
+        </div>
+        <div className="d-flex mt-1">
+          {noteState.addLabel.map((label, idx) => (
+            <span
+              className={label ? "chips white-text-color" : "hide-label"}
+              key={idx}
+            >
+              {label}
+            </span>
+          ))}
+          <span
+            className={
+              noteState.priority ? "chips white-text-color" : "hide-label"
+            }
+          >
+            {noteState.priority}
+          </span>
         </div>
         <div className="d-flex flex-justify-around mt-1 align-items-center">
           <div className="pos-relative">
