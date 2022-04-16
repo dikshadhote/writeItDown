@@ -1,5 +1,11 @@
-import { useReducer, createContext, useContext } from "react";
-
+import {
+  useReducer,
+  createContext,
+  useContext,
+  useEffect,
+  useState,
+} from "react";
+import { getNotedata } from "../ApiServices/ApiServices";
 const NoteContext = createContext();
 
 const useNote = () => useContext(NoteContext);
@@ -48,6 +54,16 @@ const noteReducer = (noteState, action) => {
 };
 
 const NoteProvider = ({ children }) => {
+  const [noteData, setNoteData] = useState([]);
+
+  const getData = async () => {
+    const {
+      data: { notes },
+    } = await getNotedata();
+
+    setNoteData(notes);
+  };
+
   const [noteState, noteDispatch] = useReducer(noteReducer, {
     title: "",
     description: "",
@@ -57,8 +73,11 @@ const NoteProvider = ({ children }) => {
     priority: "",
   });
 
+  useEffect(() => {
+    getData();
+  }, [noteState]);
   return (
-    <NoteContext.Provider value={{ noteState, noteDispatch }}>
+    <NoteContext.Provider value={{ noteState, noteDispatch, noteData }}>
       {children}
     </NoteContext.Provider>
   );
