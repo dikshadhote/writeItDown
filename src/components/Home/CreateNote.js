@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { BsPinAngleFill } from "react-icons/bs";
 import { MdOutlineLabel, MdColorLens, MdPriorityHigh } from "react-icons/md";
 import { useNote } from "../../Context/notes-context";
 import { colors } from "../colorsDB";
+import { createNoteHandler } from "../../ApiServices/ApiServices";
+
 export default function CreateNote() {
   const { noteState, noteDispatch } = useNote();
   const isPin = noteState.isPin;
@@ -11,14 +13,23 @@ export default function CreateNote() {
   const [showPallete, setShowPallete] = useState(false);
   const [showPriority, setShowPriority] = useState(false);
   let priorities = ["High", "Low", "Medium"];
+  const createNote = async (data) => {
+    await createNoteHandler(data);
+  };
+
   return (
     <div>
-      <div
+      <form
         className={
           noteState.cardColor.cardColor
             ? `create-note-container p-1 ${noteState.cardColor.cardColor}`
             : "create-note-container p-1 black-bg"
         }
+        onSubmit={(e) => {
+          e.preventDefault();
+          createNote(noteState);
+          noteDispatch({ type: "CLEAR_DATA" });
+        }}
       >
         <div className="d-flex flex-justify-space-between align-items-center">
           <input
@@ -35,7 +46,7 @@ export default function CreateNote() {
                   payload: e.target.value,
                 });
                 clearTimeout(timer);
-              }, 5000);
+              }, 1000);
             }}
           />
           <BsPinAngleFill
@@ -64,7 +75,7 @@ export default function CreateNote() {
                   payload: e.target.value,
                 });
                 clearTimeout(timer);
-              }, 5000);
+              }, 2000);
             }}
           />
         </div>
@@ -97,7 +108,7 @@ export default function CreateNote() {
                         setLabel(e.target.value);
                       }
                       clearTimeout(timer);
-                    }, 2000);
+                    }, 1000);
                   }}
                 />
                 <button
@@ -211,17 +222,12 @@ export default function CreateNote() {
           <button
             className="p-1 font-weight-bold cursor-pointer border-radius"
             title="Add Note"
+            type="submit"
           >
             ADD
           </button>
-          <a
-            className="p-1 font-weight-bold cursor-pointer border-radius cursor-pointer"
-            title="Clear data"
-          >
-            CLEAR
-          </a>
         </div>
-      </div>
+      </form>
     </div>
   );
 }
