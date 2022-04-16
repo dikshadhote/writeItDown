@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { BsPinAngleFill } from "react-icons/bs";
 import { MdOutlineLabel, MdColorLens, MdPriorityHigh } from "react-icons/md";
 import { useNote } from "../../Context/notes-context";
