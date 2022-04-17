@@ -35,7 +35,7 @@ const createNoteHandler = async (data) => {
     const res = await axios.post(
       "/api/notes",
       {
-        note: { ...data },
+        note: data,
       },
       {
         headers: {
