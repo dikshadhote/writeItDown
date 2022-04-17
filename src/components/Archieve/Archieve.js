@@ -1,5 +1,9 @@
 import React from "react";
-
+import { Sidebar } from "../index";
 export default function Archieve() {
-  return <div>Archieve</div>;
+  return (
+    <div className=" d-grid ">
+      <Sidebar />
+    </div>
+  );
 }
