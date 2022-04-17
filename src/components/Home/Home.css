@@ -6,7 +6,6 @@
 
 .create-note-container {
   width: 35rem;
-  height: 12rem;
   border-radius: 5px;
   border: 1px solid var(--gray-text);
   margin-top: 3rem;
@@ -105,4 +104,24 @@ input:focus-visible {
   position: absolute;
   top: 2.3rem;
   left: -3rem;
+}
+
+.displayNote {
+  box-shadow: 0 6px 1.25rem 0 var(--gray-text);
+  width: 25rem;
+}
+
+.note-desc {
+  width: 90%;
+  word-wrap: break-word;
+}
+
+.chips {
+  bottom: 1rem;
+  padding: 8px;
+  border-radius: 4rem;
+  font-size: 0.9rem;
+  background-color: var(--gray-text);
+  font-weight: 600;
+  margin: 5px;
 }
