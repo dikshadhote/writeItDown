@@ -40,13 +40,10 @@ export default function CreateNote() {
             }
             placeholder="Title"
             onChange={(e) => {
-              let timer = setTimeout(() => {
-                noteDispatch({
-                  type: "SET_TITLE",
-                  payload: e.target.value,
-                });
-                clearTimeout(timer);
-              }, 1000);
+              noteDispatch({
+                type: "SET_TITLE",
+                payload: e.target.value,
+              });
             }}
           />
           <BsPinAngleFill
@@ -73,13 +70,10 @@ export default function CreateNote() {
             }
             placeholder="Add note here..."
             onChange={(e) => {
-              let timer = setTimeout(() => {
-                noteDispatch({
-                  type: "SET_DESCRIPTION",
-                  payload: e.target.value,
-                });
-                clearTimeout(timer);
-              }, 2000);
+              noteDispatch({
+                type: "SET_DESCRIPTION",
+                payload: e.target.value,
+              });
             }}
           />
         </div>
@@ -124,12 +118,9 @@ export default function CreateNote() {
                   className="white-text-color mt-1 ml-1 input-label fs-3"
                   placeholder="Add label"
                   onChange={(e) => {
-                    let timer = setTimeout(() => {
-                      if (e.target.value !== "") {
-                        setLabel(e.target.value);
-                      }
-                      clearTimeout(timer);
-                    }, 1000);
+                    if (e.target.value !== "") {
+                      setLabel(e.target.value);
+                    }
                   }}
                 />
                 <button
