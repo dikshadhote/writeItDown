@@ -23,7 +23,7 @@ export default function Router() {
         element={<PrivateRoute navigateToPath={<Home />}></PrivateRoute>}
       />
       <Route
-        path="/archieve"
+        path="/archive"
         element={<PrivateRoute navigateToPath={<Archieve />}></PrivateRoute>}
       />
       <Route
