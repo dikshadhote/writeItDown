@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { MdOutlineLabel, MdOutlineArchive } from "react-icons/md";
 import { AiOutlineHome } from "react-icons/ai";
 import { BsTrash } from "react-icons/bs";
