@@ -62,4 +62,31 @@ const getNotedata = async () => {
   }
 };
 
-export { signUpHandler, logInHandler, createNoteHandler, getNotedata };
+// Archive
+
+const addToArchiveHandler = async (note) => {
+  try {
+    const res = await axios.post(
+      `/api/notes/archives/${note._id}`,
+      {
+        note: { ...note },
+      },
+      {
+        headers: {
+          authorization: localStorage.getItem("token"),
+        },
+      }
+    );
+    return res;
+  } catch (e) {
+    console.error(e);
+  }
+};
+
+export {
+  signUpHandler,
+  logInHandler,
+  createNoteHandler,
+  getNotedata,
+  addToArchiveHandler,
+};

@@ -6,8 +6,15 @@ import {
   MdOutlineArchive,
 } from "react-icons/md";
 import { useNote } from "../../Context/notes-context";
+import { addToArchiveHandler } from "../../ApiServices/ApiServices";
+
 export default function DisplayNote() {
   const { noteData } = useNote();
+
+  const addToArchive = async (note) => {
+    await addToArchiveHandler(note);
+  };
+
   return (
     <div>
       <div className="d-flex m-5 flex-wrap">
@@ -69,6 +76,9 @@ export default function DisplayNote() {
                 <MdOutlineArchive
                   className="fs-3  white-text-color cursor-pointer"
                   title="Add to archive"
+                  onClick={() => {
+                    addToArchive(note);
+                  }}
                 />
                 <BsTrash
                   className="fs-2 white-text-color cursor-pointer"
