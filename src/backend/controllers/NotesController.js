@@ -132,7 +132,7 @@ export const updateNoteHandler = function (schema, request) {
 
 /**
  * This handler handles archiving a note
- * send POST Request at /api/notes/archive/:noteId
+ * send POST Request at /api/notes/archives/:noteId
  * body contains {note}
  * */
 
