@@ -1,34 +1,48 @@
-import { useReducer, createContext, useContext } from "react";
+import { useState, createContext, useContext } from "react";
+import { useNote } from "./notes-context";
+import {
+  addToArchiveHandler,
+  getArchivesdata,
+  restoreDataArchive,
+} from "../ApiServices/ApiServices";
+const ArchiveContext = createContext();
 
-const displayNoteContext = createContext();
+const useArchives = () => useContext(ArchiveContext);
 
-const useDisplayNote = () => useContext(displayNoteContext);
+const ArchiveProvider = ({ children }) => {
+  const { setNoteData } = useNote();
+  const [archiveData, setArchiveData] = useState([]);
 
-const displayNoteReducer = (displayNoteState, action) => {
-  console.log(action.payload);
-  switch (action.type) {
-    case "TOGGLE_ARCHIVE":
-      return { ...displayNoteState, isArchive: action.payload };
-    case "TOGGLE_TRASH":
-  }
-};
+  const addToArchive = async (note) => {
+    const { data } = await addToArchiveHandler(note);
+    setNoteData(data.notes);
+    setArchiveData(data.archives);
+  };
 
-const DisplayNoteProvider = ({ children }) => {
-  const [displayNoteState, displayNoteDispatch] = useReducer(
-    displayNoteReducer,
-    {
-      isArchive: false,
-      isTrash: false,
-      editNote: [],
-    }
-  );
+  const fetchArchiveData = async () => {
+    const { data } = await getArchivesdata();
+    setArchiveData(data.archives);
+  };
+
+  const restoreArchiveData = async (note) => {
+    const { data } = await restoreDataArchive(note);
+    setNoteData(data.notes);
+    setArchiveData(data.archives);
+  };
+
   return (
-    <displayNoteContext.Provider
-      value={{ displayNoteState, displayNoteDispatch }}
+    <ArchiveContext.Provider
+      value={{
+        addToArchive,
+        fetchArchiveData,
+        archiveData,
+        setArchiveData,
+        restoreArchiveData,
+      }}
     >
       {children}
-    </displayNoteContext.Provider>
+    </ArchiveContext.Provider>
   );
 };
 
-export { DisplayNoteProvider, useDisplayNote };
+export { ArchiveProvider, useArchives };

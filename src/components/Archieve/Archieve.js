@@ -1,20 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { Sidebar } from "../index";
-import { getArchivesdata } from "../../ApiServices/ApiServices";
+
 import { BsPinAngleFill, BsTrash } from "react-icons/bs";
 import { MdOutlineModeEditOutline, MdOutlineUnarchive } from "react-icons/md";
+import { useArchives } from "../../Context/archive-context";
+
 export default function Archieve() {
-  const [archiveData, setArchiveData] = useState([]);
-
-  const fetchArchiveData = async () => {
-    const { data } = await getArchivesdata();
-    setArchiveData(data.archives);
-  };
-
-  useEffect(() => {
-    fetchArchiveData();
-  }, []);
-  console.log(archiveData);
+  const { archiveData, restoreArchiveData } = useArchives();
   return (
     <div className=" d-grid ">
       <Sidebar />
@@ -72,7 +64,7 @@ export default function Archieve() {
                   className="fs-3  white-text-color cursor-pointer"
                   title="Add to archive"
                   onClick={() => {
-                    addToArchive(note);
+                    restoreArchiveData(note);
                   }}
                 />
                 <BsTrash

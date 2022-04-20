@@ -6,14 +6,11 @@ import {
   MdOutlineArchive,
 } from "react-icons/md";
 import { useNote } from "../../Context/notes-context";
-import { addToArchiveHandler } from "../../ApiServices/ApiServices";
+import { useArchives } from "../../Context/archive-context";
 
 export default function DisplayNote() {
   const { noteData } = useNote();
-
-  const addToArchive = async (note) => {
-    await addToArchiveHandler(note);
-  };
+  const { addToArchive } = useArchives();
 
   return (
     <div>
