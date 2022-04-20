@@ -77,7 +77,9 @@ const NoteProvider = ({ children }) => {
     getData();
   }, [noteState]);
   return (
-    <NoteContext.Provider value={{ noteState, noteDispatch, noteData }}>
+    <NoteContext.Provider
+      value={{ noteState, noteDispatch, noteData, setNoteData }}
+    >
       {children}
     </NoteContext.Provider>
   );
