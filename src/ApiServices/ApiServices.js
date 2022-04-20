@@ -97,6 +97,27 @@ const getArchivesdata = async () => {
   }
 };
 
+// Restore from Archive
+
+const restoreDataArchive = async (note) => {
+  try {
+    const res = await axios.post(
+      `/api/archives/restore/${note._id}`,
+      {
+        note: { ...note },
+      },
+      {
+        headers: {
+          authorization: localStorage.getItem("token"),
+        },
+      }
+    );
+    return res;
+  } catch (e) {
+    console.error(e);
+  }
+};
+
 export {
   signUpHandler,
   logInHandler,
@@ -104,4 +125,5 @@ export {
   getNotedata,
   addToArchiveHandler,
   getArchivesdata,
+  restoreDataArchive,
 };
