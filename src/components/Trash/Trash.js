@@ -4,7 +4,7 @@ import { useTrash } from "../../Context/trash-context";
 import { BsTrash } from "react-icons/bs";
 import { FaTrashRestore } from "react-icons/fa";
 export default function Trash() {
-  const { trashData } = useTrash();
+  const { trashData, restoreFromTrash } = useTrash();
   return (
     <div className=" d-grid ">
       <Sidebar />
@@ -46,6 +46,7 @@ export default function Trash() {
                 <FaTrashRestore
                   className="fs-2 white-text-color cursor-pointer"
                   title="Restore from trash"
+                  onClick={() => restoreFromTrash(note)}
                 />
                 <BsTrash
                   className="fs-2 white-text-color cursor-pointer"

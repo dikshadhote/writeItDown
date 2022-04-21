@@ -138,7 +138,25 @@ const addNoteToTrash = async (note) => {
   }
 };
 
-// note to trash from archive
+// Restore note from trash to notes
+const restoreNoteFromTrash = async (note) => {
+  try {
+    const res = await axios.post(
+      `/api/trash/restore/${note._id}`,
+      {
+        note: { ...note },
+      },
+      {
+        headers: {
+          authorization: localStorage.getItem("token"),
+        },
+      }
+    );
+    return res;
+  } catch (e) {
+    console.error(e);
+  }
+};
 
 export {
   signUpHandler,
@@ -149,4 +167,5 @@ export {
   getArchivesdata,
   restoreDataArchive,
   addNoteToTrash,
+  restoreNoteFromTrash,
 };
