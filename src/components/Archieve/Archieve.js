@@ -31,7 +31,7 @@ export default function Archieve() {
               key={_id}
             >
               <div className="d-flex flex-justify-space-between  align-items-center p-1">
-                <h5>{title}</h5>
+                <h5 className="white-text-color">{title}</h5>
                 <BsPinAngleFill
                   className={
                     note.isPin
@@ -42,7 +42,7 @@ export default function Archieve() {
                 />
               </div>
               <div className=" d-flex pl-2">
-                <p className="note-desc">{description}</p>
+                <p className="note-desc white-text-color">{description}</p>
               </div>
               <div className="d-flex p-2 mt-2">
                 {addLabel.map((label, idx) => (
