@@ -7,10 +7,12 @@ import {
 } from "react-icons/md";
 import { useNote } from "../../Context/notes-context";
 import { useArchives } from "../../Context/archive-context";
+import { useTrash } from "../../Context/trash-context";
 
 export default function DisplayNote() {
   const { noteData } = useNote();
   const { addToArchive } = useArchives();
+  const { addToTrash } = useTrash();
 
   return (
     <div>
@@ -80,6 +82,9 @@ export default function DisplayNote() {
                 <BsTrash
                   className="fs-2 white-text-color cursor-pointer"
                   title="Add to trash"
+                  onClick={() => {
+                    addToTrash(note);
+                  }}
                 />
                 <MdOutlineModeEditOutline
                   className="fs-2 white-text-color cursor-pointer"
