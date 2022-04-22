@@ -138,6 +138,21 @@ const addNoteToTrash = async (note) => {
   }
 };
 
+// notes in trash
+
+const getTrashdata = async () => {
+  try {
+    const res = await axios.get("/api/trash", {
+      headers: {
+        authorization: localStorage.getItem("token"),
+      },
+    });
+    return res;
+  } catch (e) {
+    console.error(e);
+  }
+};
+
 // Restore note from trash to notes
 const restoreNoteFromTrash = async (note) => {
   try {
@@ -158,6 +173,20 @@ const restoreNoteFromTrash = async (note) => {
   }
 };
 
+//  delete permanently
+
+const deleteNoteFromTrash = async (note) => {
+  try {
+    const res = await axios.delete(`/api/trash/delete/${note._id}`, {
+      headers: {
+        authorization: localStorage.getItem("token"),
+      },
+    });
+    return res;
+  } catch (e) {
+    console.error(e);
+  }
+};
 export {
   signUpHandler,
   logInHandler,
@@ -168,4 +197,6 @@ export {
   restoreDataArchive,
   addNoteToTrash,
   restoreNoteFromTrash,
+  deleteNoteFromTrash,
+  getTrashdata,
 };
