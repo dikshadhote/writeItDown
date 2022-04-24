@@ -33,6 +33,7 @@ export default function CreateNote() {
       >
         <div className="d-flex flex-justify-space-between align-items-center">
           <input
+            required
             className={
               noteState.cardColor.inputColor
                 ? `input-create-note gray-text-note  fs-2 ${noteState.cardColor.inputColor}`
@@ -63,6 +64,7 @@ export default function CreateNote() {
         </div>
         <div className="mt-1">
           <input
+            required
             className={
               noteState.cardColor.inputColor
                 ? `input-create-note input-desc white-text-color fs-2 ${noteState.cardColor.inputColor}`
