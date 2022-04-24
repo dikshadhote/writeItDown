@@ -62,4 +62,163 @@ const getNotedata = async () => {
   }
 };
 
-export { signUpHandler, logInHandler, createNoteHandler, getNotedata };
+// Archive
+// Add to archive
+const addToArchiveHandler = async (note) => {
+  try {
+    const res = await axios.post(
+      `/api/notes/archives/${note._id}`,
+      {
+        note: { ...note },
+      },
+      {
+        headers: {
+          authorization: localStorage.getItem("token"),
+        },
+      }
+    );
+    return res;
+  } catch (e) {
+    console.error(e);
+  }
+};
+
+// get all archive
+const getArchivesdata = async () => {
+  try {
+    const res = await axios.get("/api/archives", {
+      headers: {
+        authorization: localStorage.getItem("token"),
+      },
+    });
+    return res;
+  } catch (e) {
+    console.error(e);
+  }
+};
+
+// Restore from Archive
+
+const restoreDataArchive = async (note) => {
+  try {
+    const res = await axios.post(
+      `/api/archives/restore/${note._id}`,
+      {
+        note: { ...note },
+      },
+      {
+        headers: {
+          authorization: localStorage.getItem("token"),
+        },
+      }
+    );
+    return res;
+  } catch (e) {
+    console.error(e);
+  }
+};
+
+// Move to trash from archive
+
+const moveToTrashFromArchive = async (note) => {
+  try {
+    const res = await axios.post(
+      `/api/archives/trash/${note._id}`,
+      {
+        note: { ...note },
+      },
+      {
+        headers: {
+          authorization: localStorage.getItem("token"),
+        },
+      }
+    );
+    return res;
+  } catch (e) {
+    console.error(e);
+  }
+};
+
+// Add note to trash from home
+const addNoteToTrash = async (note) => {
+  try {
+    const res = await axios.post(
+      `/api/trash/delete/${note._id}`,
+      {
+        note: { ...note },
+      },
+      {
+        headers: {
+          authorization: localStorage.getItem("token"),
+        },
+      }
+    );
+    return res;
+  } catch (e) {
+    console.error(e);
+  }
+};
+
+// notes in trash
+
+const getTrashdata = async () => {
+  try {
+    const res = await axios.get("/api/trash", {
+      headers: {
+        authorization: localStorage.getItem("token"),
+      },
+    });
+    return res;
+  } catch (e) {
+    console.error(e);
+  }
+};
+
+// Restore note from trash to notes
+const restoreNoteFromTrash = async (note) => {
+  try {
+    const res = await axios.post(
+      `/api/trash/restore/${note._id}`,
+      {
+        note: { ...note },
+      },
+      {
+        headers: {
+          authorization: localStorage.getItem("token"),
+        },
+      }
+    );
+    return res;
+  } catch (e) {
+    console.error(e);
+  }
+};
+
+//  delete permanently
+
+const deleteNoteFromTrash = async (note) => {
+  try {
+    const res = await axios.delete(`/api/trash/delete/${note._id}`, {
+      headers: {
+        authorization: localStorage.getItem("token"),
+      },
+    });
+    return res;
+  } catch (e) {
+    console.error(e);
+  }
+};
+export {
+  signUpHandler,
+  logInHandler,
+  createNoteHandler,
+  getNotedata,
+  addToArchiveHandler,
+  getArchivesdata,
+  restoreDataArchive,
+  addNoteToTrash,
+  restoreNoteFromTrash,
+  deleteNoteFromTrash,
+  getTrashdata,
+  moveToTrashFromArchive,
+};

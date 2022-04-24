@@ -6,8 +6,14 @@ import {
   MdOutlineArchive,
 } from "react-icons/md";
 import { useNote } from "../../Context/notes-context";
+import { useArchives } from "../../Context/archive-context";
+import { useTrash } from "../../Context/trash-context";
+
 export default function DisplayNote() {
   const { noteData } = useNote();
+  const { addToArchive } = useArchives();
+  const { addToTrash } = useTrash();
+
   return (
     <div>
       <div className="d-flex m-5 flex-wrap">
@@ -69,10 +75,16 @@ export default function DisplayNote() {
                 <MdOutlineArchive
                   className="fs-3  white-text-color cursor-pointer"
                   title="Add to archive"
+                  onClick={() => {
+                    addToArchive(note);
+                  }}
                 />
                 <BsTrash
                   className="fs-2 white-text-color cursor-pointer"
                   title="Add to trash"
+                  onClick={() => {
+                    addToTrash(note);
+                  }}
                 />
                 <MdOutlineModeEditOutline
                   className="fs-2 white-text-color cursor-pointer"

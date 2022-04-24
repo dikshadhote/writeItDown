@@ -4,6 +4,7 @@
 @import "./components/Sidebar/Sidebar.css";
 @import "./components/Home/Home.css";
 @import "./components/Login/Login.css";
+@import "./components/Archieve/Archieve.css";
 
 :root {
   --primary-ocean-color: #10d8df;
