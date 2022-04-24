@@ -1,5 +1,6 @@
 import { useState, createContext, useContext } from "react";
 import { useNote } from "./notes-context";
+import { useTrash } from "./trash-context";
 import {
   addToArchiveHandler,
   getArchivesdata,

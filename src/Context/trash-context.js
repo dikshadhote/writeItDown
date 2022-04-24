@@ -3,14 +3,17 @@ import {
   addNoteToTrash,
   restoreNoteFromTrash,
   deleteNoteFromTrash,
+  moveToTrashFromArchive,
 } from "../ApiServices/ApiServices";
 import { useNote } from "./notes-context";
+import { useArchives } from "./archive-context";
 const TrashContext = createContext();
 
 const useTrash = () => useContext(TrashContext);
 
 const TrashProvider = ({ children }) => {
   const { setNoteData } = useNote();
+  const { setArchiveData } = useArchives();
   const [trashData, setTrashData] = useState([]);
 
   const addToTrash = async (note) => {
@@ -30,6 +33,12 @@ const TrashProvider = ({ children }) => {
     setTrashData(data.trash);
   };
 
+  const trashFromArchive = async (note) => {
+    const { data } = await moveToTrashFromArchive(note);
+    setTrashData(data.trash);
+    setArchiveData(data.archives);
+  };
+
   return (
     <TrashContext.Provider
       value={{
@@ -38,6 +47,7 @@ const TrashProvider = ({ children }) => {
         addToTrash,
         restoreFromTrash,
         deleteFromTrash,
+        trashFromArchive,
       }}
     >
       {children}
