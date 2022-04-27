@@ -10,7 +10,7 @@ import { useArchives } from "../../Context/archive-context";
 import { useTrash } from "../../Context/trash-context";
 
 export default function DisplayNote() {
-  const { noteData } = useNote();
+  const { noteData, setEdit, noteDispatch } = useNote();
   const { addToArchive } = useArchives();
   const { addToTrash } = useTrash();
 
@@ -89,6 +89,11 @@ export default function DisplayNote() {
                 <MdOutlineModeEditOutline
                   className="fs-2 white-text-color cursor-pointer"
                   title="Edit"
+                  onClick={() => {
+                    setEdit(true);
+                    noteDispatch({ type: "EDIT", payload: note });
+                    window.scroll({ top: 0, behavior: "smooth" });
+                  }}
                 />
               </div>
             </div>

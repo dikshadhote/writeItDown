@@ -6,7 +6,8 @@ import { colors } from "../colorsDB";
 import { createNoteHandler } from "../../ApiServices/ApiServices";
 
 export default function CreateNote() {
-  const { noteState, noteDispatch } = useNote();
+  const { noteState, noteData, noteDispatch, edit, editData, setEdit } =
+    useNote();
   const isPin = noteState.isPin;
   const [label, setLabel] = useState("");
   const [showLabel, setShowLabel] = useState(false);
@@ -16,7 +17,6 @@ export default function CreateNote() {
   const createNote = async (data) => {
     await createNoteHandler(data);
   };
-
   return (
     <div>
       <form
@@ -27,7 +27,17 @@ export default function CreateNote() {
         }
         onSubmit={(e) => {
           e.preventDefault();
-          createNote(noteState);
+          // return true if not exists
+          const checkNoteExist = noteData.some(
+            (note) => note._id === noteState._id
+          );
+
+          if (checkNoteExist) {
+            editData(noteState);
+            setEdit(false);
+          } else {
+            createNote(noteState);
+          }
           noteDispatch({ type: "CLEAR_DATA" });
         }}
       >
@@ -40,6 +50,7 @@ export default function CreateNote() {
                 : "input-create-note gray-text-note fs-2 black-light-bg"
             }
             placeholder="Title"
+            value={noteState.title}
             onChange={(e) => {
               noteDispatch({
                 type: "SET_TITLE",
@@ -71,6 +82,7 @@ export default function CreateNote() {
                 : "input-create-note input-desc white-text-color fs-2 black-light-bg"
             }
             placeholder="Add note here..."
+            value={noteState.description}
             onChange={(e) => {
               noteDispatch({
                 type: "SET_DESCRIPTION",
@@ -238,7 +250,7 @@ export default function CreateNote() {
             title="Add Note"
             type="submit"
           >
-            ADD
+            {edit === true ? "EDIT" : "ADD"}
           </button>
         </div>
       </form>
