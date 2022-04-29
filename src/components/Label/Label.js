@@ -2,7 +2,7 @@ import React from "react";
 import { Sidebar } from "../index";
 import { useNote } from "../../Context/notes-context";
 import { BsPinAngleFill, BsTrash } from "react-icons/bs";
-import { MdOutlineModeEditOutline, MdOutlineArchive } from "react-icons/md";
+import { MdOutlineArchive } from "react-icons/md";
 
 import { useArchives } from "../../Context/archive-context";
 import { useTrash } from "../../Context/trash-context";
@@ -92,10 +92,6 @@ export default function Label() {
                                 onClick={() => {
                                   addToTrash(note);
                                 }}
-                              />
-                              <MdOutlineModeEditOutline
-                                className="fs-2 white-text-color cursor-pointer"
-                                title="Edit"
                               />
                             </div>
                           </div>
