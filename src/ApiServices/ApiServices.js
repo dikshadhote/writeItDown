@@ -160,6 +160,28 @@ const moveToTrashFromArchive = async (note) => {
   }
 };
 
+// Edit from Archive
+
+const editNoteFromArchive = async (note) => {
+  try {
+    const res = await axios.post(
+      `/api/archives/${note._id}`,
+      {
+        note: { ...note },
+      },
+      {
+        headers: {
+          authorization: localStorage.getItem("token"),
+        },
+      }
+    );
+    console.log(res);
+    return res;
+  } catch (e) {
+    console.error(e);
+  }
+};
+
 // Add note to trash from home
 const addNoteToTrash = async (note) => {
   try {
@@ -243,4 +265,5 @@ export {
   deleteNoteFromTrash,
   getTrashdata,
   moveToTrashFromArchive,
+  editNoteFromArchive,
 };
