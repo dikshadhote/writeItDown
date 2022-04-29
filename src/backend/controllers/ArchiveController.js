@@ -104,3 +104,35 @@ export const moveArchivedToTrashHandler = function (schema, request) {
     );
   }
 };
+
+//Edit archived note
+//send POST Request at /api/archives
+
+export const updateArchiveHandler = function (schema, request) {
+  const user = requiresAuth.call(this, request);
+  try {
+    if (!user) {
+      return new Response(
+        404,
+        {},
+        {
+          errors: ["The email you entered is not Registered. Not Found error"],
+        }
+      );
+    }
+    const { note } = JSON.parse(request.requestBody);
+    const { noteId } = request.params;
+    const noteIndex = user.archives.findIndex((note) => note._id === noteId);
+    user.archives[noteIndex] = { ...user.archives[noteIndex], ...note };
+    this.db.users.update({ _id: user._id }, user);
+    return new Response(201, {}, { archives: user.archives });
+  } catch (error) {
+    return new Response(
+      500,
+      {},
+      {
+        error,
+      }
+    );
+  }
+};
