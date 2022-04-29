@@ -59,7 +59,7 @@ const noteReducer = (noteState, action) => {
 const NoteProvider = ({ children }) => {
   const [noteData, setNoteData] = useState([]);
   const [edit, setEdit] = useState(false);
-
+  const [showModal, setShowModal] = useState(false);
   const getData = async () => {
     const {
       data: { notes },
@@ -97,6 +97,8 @@ const NoteProvider = ({ children }) => {
         setEdit,
         edit,
         editData,
+        showModal,
+        setShowModal,
       }}
     >
       {children}
