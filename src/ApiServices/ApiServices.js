@@ -69,7 +69,7 @@ const editNoteData = async (note) => {
     const res = await axios.post(
       `/api/notes/${note._id}`,
       {
-        note: { ...note },
+        note,
       },
       {
         headers: {
@@ -167,7 +167,7 @@ const editNoteFromArchive = async (note) => {
     const res = await axios.post(
       `/api/archives/${note._id}`,
       {
-        note: { ...note },
+        note,
       },
       {
         headers: {
