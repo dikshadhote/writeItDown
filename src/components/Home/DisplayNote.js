@@ -8,12 +8,14 @@ import {
 import { useNote } from "../../Context/notes-context";
 import { useArchives } from "../../Context/archive-context";
 import { useTrash } from "../../Context/trash-context";
-
+import { useFilter } from "../../Context/filter-notes-context";
 export default function DisplayNote() {
-  const { noteData, setEdit, noteDispatch } = useNote();
+  const { noteData, setEdit, noteDispatch, uniqueLabel } = useNote();
   const { addToArchive } = useArchives();
   const { addToTrash } = useTrash();
-
+  const { filterDispatch } = useFilter();
+  const priorityArr = ["Filter By Priority", "High", "Medium", "Low"];
+  console.log(uniqueLabel);
   return (
     <div>
       <div className="d-flex align-items-center m-5 border-grey-top border-grey-bottom filter-container">
@@ -23,11 +25,20 @@ export default function DisplayNote() {
             id="filter-priority"
             name="filter-priority"
             className="p-1 border-radius select-container-bg white-text-color font-weight-bold"
+            onChange={(e) => {
+              filterDispatch({
+                type: "PRIORITY",
+                payload: e.target.value,
+              });
+            }}
           >
-            <option value="Filter By Priority p-1 ">Filter By Priority</option>
-            <option value="High p-1">High</option>
-            <option value="Medium p-1">Medium</option>
-            <option value="Low p-1">Low</option>
+            {priorityArr.map((priority, idx) => {
+              return (
+                <option value={priority} key={idx}>
+                  {priority}
+                </option>
+              );
+            })}
           </select>
         </div>
         <div className="white-text-color filt border-grey-left ">
@@ -35,11 +46,21 @@ export default function DisplayNote() {
             id="filter-label"
             name="filter-label"
             className="p-1 border-radius select-container-bg white-text-color font-weight-bold"
+            onChange={(e) => {
+              filterDispatch({
+                type: "LABEL",
+                payload: e.target.value,
+              });
+            }}
           >
             <option value="Filter by Label"> Filter by Label</option>
-            <option value="High">Label1 </option>
-            <option value="Medium">Label2</option>
-            <option value="Low">Label3 </option>
+            {uniqueLabel.map((label, idx) => {
+              return (
+                <option value={label} key={idx}>
+                  {label}
+                </option>
+              );
+            })}
           </select>
         </div>
       </div>

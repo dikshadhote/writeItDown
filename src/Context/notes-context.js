@@ -75,6 +75,12 @@ const NoteProvider = ({ children }) => {
     setNoteData(notes);
   };
 
+  const labelData = noteData.reduce((acc, curr) => {
+    return (acc = [...acc, curr.addLabel[0]]);
+  }, []);
+
+  const uniqueSet = [...new Set(labelData)];
+  const uniqueLabel = uniqueSet.filter((label) => label !== undefined);
   const [noteState, noteDispatch] = useReducer(noteReducer, {
     title: "",
     description: "",
@@ -99,6 +105,7 @@ const NoteProvider = ({ children }) => {
         editData,
         showModal,
         setShowModal,
+        uniqueLabel,
       }}
     >
       {children}

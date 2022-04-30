@@ -8,14 +8,10 @@ import { useArchives } from "../../Context/archive-context";
 import { useTrash } from "../../Context/trash-context";
 
 export default function Label() {
-  const { noteData } = useNote();
+  const { noteData, uniqueLabel } = useNote();
   const { addToArchive } = useArchives();
   const { addToTrash } = useTrash();
-  const labelData = noteData.reduce((acc, curr) => {
-    return (acc = [...acc, curr.addLabel[0]]);
-  }, []);
 
-  const uniqueLabel = [...new Set(labelData)];
   return (
     <div className=" d-grid ">
       <Sidebar />

@@ -16,15 +16,15 @@ ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
       <AuthProvider>
-        <FilterProvider>
-          <NoteProvider>
+        <NoteProvider>
+          <FilterProvider>
             <ArchiveProvider>
               <TrashProvider>
                 <App />
               </TrashProvider>
             </ArchiveProvider>
-          </NoteProvider>
-        </FilterProvider>
+          </FilterProvider>
+        </NoteProvider>
       </AuthProvider>
     </BrowserRouter>
   </React.StrictMode>,
