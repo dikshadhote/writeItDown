@@ -5,6 +5,7 @@ import {
   addToArchiveHandler,
   getArchivesdata,
   restoreDataArchive,
+  editNoteFromArchive,
 } from "../ApiServices/ApiServices";
 const ArchiveContext = createContext();
 
@@ -31,6 +32,15 @@ const ArchiveProvider = ({ children }) => {
     setArchiveData(data.archives);
   };
 
+  const editArchiveData = async (editNote) => {
+    console.log("input", editNote);
+    const {
+      data: { archives },
+    } = await editNoteFromArchive(editNote);
+    setArchiveData(archives);
+    console.log("output", archives);
+  };
+
   return (
     <ArchiveContext.Provider
       value={{
@@ -39,6 +49,7 @@ const ArchiveProvider = ({ children }) => {
         archiveData,
         setArchiveData,
         restoreArchiveData,
+        editArchiveData,
       }}
     >
       {children}

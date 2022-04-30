@@ -5,7 +5,7 @@ import {
   useEffect,
   useState,
 } from "react";
-import { getNotedata } from "../ApiServices/ApiServices";
+import { getNotedata, editNoteData } from "../ApiServices/ApiServices";
 const NoteContext = createContext();
 
 const useNote = () => useContext(NoteContext);
@@ -48,6 +48,9 @@ const noteReducer = (noteState, action) => {
         cardColor: {},
         priority: "",
       };
+
+    case "EDIT":
+      return { ...action.payload };
     default:
       return { ...noteState };
   }
@@ -55,12 +58,20 @@ const noteReducer = (noteState, action) => {
 
 const NoteProvider = ({ children }) => {
   const [noteData, setNoteData] = useState([]);
-
+  const [edit, setEdit] = useState(false);
+  const [showModal, setShowModal] = useState(false);
   const getData = async () => {
     const {
       data: { notes },
     } = await getNotedata();
 
+    setNoteData(notes);
+  };
+
+  const editData = async (editNote) => {
+    const {
+      data: { notes },
+    } = await editNoteData(editNote);
     setNoteData(notes);
   };
 
@@ -78,7 +89,17 @@ const NoteProvider = ({ children }) => {
   }, [noteState]);
   return (
     <NoteContext.Provider
-      value={{ noteState, noteDispatch, noteData, setNoteData }}
+      value={{
+        noteState,
+        noteDispatch,
+        noteData,
+        setNoteData,
+        setEdit,
+        edit,
+        editData,
+        showModal,
+        setShowModal,
+      }}
     >
       {children}
     </NoteContext.Provider>

@@ -62,6 +62,27 @@ const getNotedata = async () => {
   }
 };
 
+// Edit note data /notes/:noteId
+
+const editNoteData = async (note) => {
+  try {
+    const res = await axios.post(
+      `/api/notes/${note._id}`,
+      {
+        note,
+      },
+      {
+        headers: {
+          authorization: localStorage.getItem("token"),
+        },
+      }
+    );
+    return res;
+  } catch (e) {
+    console.error(e);
+  }
+};
+
 // Archive
 // Add to archive
 const addToArchiveHandler = async (note) => {
@@ -133,6 +154,28 @@ const moveToTrashFromArchive = async (note) => {
         },
       }
     );
+    return res;
+  } catch (e) {
+    console.error(e);
+  }
+};
+
+// Edit from Archive
+
+const editNoteFromArchive = async (note) => {
+  try {
+    const res = await axios.post(
+      `/api/archives/${note._id}`,
+      {
+        note,
+      },
+      {
+        headers: {
+          authorization: localStorage.getItem("token"),
+        },
+      }
+    );
+    console.log(res);
     return res;
   } catch (e) {
     console.error(e);
@@ -213,6 +256,7 @@ export {
   logInHandler,
   createNoteHandler,
   getNotedata,
+  editNoteData,
   addToArchiveHandler,
   getArchivesdata,
   restoreDataArchive,
@@ -221,4 +265,5 @@ export {
   deleteNoteFromTrash,
   getTrashdata,
   moveToTrashFromArchive,
+  editNoteFromArchive,
 };

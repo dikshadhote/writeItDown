@@ -1,22 +1,18 @@
 import React, { useState } from "react";
+import { useNote } from "../../Context/notes-context";
 import { BsPinAngleFill } from "react-icons/bs";
 import { MdOutlineLabel, MdColorLens, MdPriorityHigh } from "react-icons/md";
-import { useNote } from "../../Context/notes-context";
 import { colors } from "../colorsDB";
-import { createNoteHandler } from "../../ApiServices/ApiServices";
-
-export default function CreateNote() {
-  const { noteState, noteData, noteDispatch, edit, editData, setEdit } =
-    useNote();
+import { useArchives } from "../../Context/archive-context";
+export default function EditModal() {
+  const { noteState, noteDispatch, editData, setShowModal } = useNote();
+  const { archiveData, editArchiveData } = useArchives();
   const isPin = noteState.isPin;
   const [label, setLabel] = useState("");
   const [showLabel, setShowLabel] = useState(false);
   const [showPallete, setShowPallete] = useState(false);
   const [showPriority, setShowPriority] = useState(false);
   let priorities = ["High", "Low", "Medium"];
-  const createNote = async (data) => {
-    await createNoteHandler(data);
-  };
   return (
     <div>
       <form
@@ -28,15 +24,13 @@ export default function CreateNote() {
         onSubmit={(e) => {
           e.preventDefault();
           // return true if not exists
-          const checkNoteExist = noteData.some(
+          const checkNoteExist = archiveData.some(
             (note) => note._id === noteState._id
           );
 
           if (checkNoteExist) {
-            editData(noteState);
-            setEdit(false);
-          } else {
-            createNote(noteState);
+            editArchiveData(noteState);
+            setShowModal(false);
           }
           noteDispatch({ type: "CLEAR_DATA" });
         }}
@@ -119,9 +113,9 @@ export default function CreateNote() {
             />
             <div className={showLabel ? "show-label" : "hide-label"}>
               <div className="d-flex flex-justify-space-between">
-                <p className="font-weight-bold ml-1">Label</p>
+                <p className="font-weight-bold white-text-color ml-1">Label</p>
                 <p
-                  className="cursor-pointer"
+                  className="cursor-pointer white-text-color"
                   onClick={() => setShowLabel(false)}
                 >
                   X
@@ -170,9 +164,9 @@ export default function CreateNote() {
               }
             >
               <div className="d-flex flex-justify-space-between">
-                <p className="font-weight-bold ml-1">Color</p>
+                <p className="font-weight-bold ml-1  white-text-color">Color</p>
                 <p
-                  className="cursor-pointer"
+                  className="cursor-pointer  white-text-color"
                   onClick={() => setShowPallete(false)}
                 >
                   X
@@ -215,7 +209,9 @@ export default function CreateNote() {
               }
             >
               <div className="d-flex flex-justify-space-between">
-                <p className="font-weight-bold ml-1 mb-1">Priority</p>
+                <p className="font-weight-bold ml-1 mb-1 white-text-color">
+                  Priority
+                </p>
                 <p
                   className="cursor-pointer"
                   onClick={() => setShowPriority(false)}
@@ -239,7 +235,9 @@ export default function CreateNote() {
                         })
                       }
                     />
-                    <label htmlFor={currPriority}>{currPriority}</label>
+                    <label htmlFor={currPriority} className="white-text-color">
+                      {currPriority}
+                    </label>
                   </li>
                 );
               })}
@@ -250,7 +248,7 @@ export default function CreateNote() {
             title="Add Note"
             type="submit"
           >
-            {edit === true ? "EDIT" : "ADD"}
+            EDIT
           </button>
         </div>
       </form>
