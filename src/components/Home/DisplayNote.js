@@ -16,6 +16,33 @@ export default function DisplayNote() {
 
   return (
     <div>
+      <div className="d-flex align-items-center m-5 border-grey-top border-grey-bottom filter-container">
+        <div className="white-text-color filt">Filters :</div>
+        <div className="white-text-color filt border-grey-left ">
+          <select
+            id="filter-priority"
+            name="filter-priority"
+            className="p-1 border-radius select-container-bg white-text-color font-weight-bold"
+          >
+            <option value="Filter By Priority p-1 ">Filter By Priority</option>
+            <option value="High p-1">High</option>
+            <option value="Medium p-1">Medium</option>
+            <option value="Low p-1">Low</option>
+          </select>
+        </div>
+        <div className="white-text-color filt border-grey-left ">
+          <select
+            id="filter-label"
+            name="filter-label"
+            className="p-1 border-radius select-container-bg white-text-color font-weight-bold"
+          >
+            <option value="Filter by Label"> Filter by Label</option>
+            <option value="High">Label1 </option>
+            <option value="Medium">Label2</option>
+            <option value="Low">Label3 </option>
+          </select>
+        </div>
+      </div>
       <div className="d-flex m-5 flex-wrap">
         {noteData.map((note) => {
           const {
