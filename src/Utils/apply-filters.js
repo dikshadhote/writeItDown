@@ -19,18 +19,4 @@ const sortByPriority = (noteData, filterState) => {
     return noteArr;
   }
 };
-
-const sortByLabel = (noteData, filterState, uniqueLabel) => {
-  if (noteData !== [] || noteData != undefined) {
-    const noteArr = [...noteData];
-    console.log(noteArr);
-    console.log(filterState.sortByLabel);
-    if (uniqueLabel.includes(filterState.sortByLabel)) {
-      const arr = noteArr.filter(
-        (note) => note.addLabel[0] === filterState.sortByLabel
-      );
-      return arr;
-    }
-  }
-};
-export { sortByPriority, sortByLabel };
+export { sortByPriority };

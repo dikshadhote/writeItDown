@@ -11,11 +11,6 @@ const NoteContext = createContext();
 const useNote = () => useContext(NoteContext);
 
 const noteReducer = (noteState, action) => {
-  //   sort out unique label
-  const repeatLabel = noteState.addLabel.some(
-    (label) => label === action.payload
-  );
-
   switch (action.type) {
     case "SET_TITLE":
       return { ...noteState, title: action.payload };
@@ -27,14 +22,9 @@ const noteReducer = (noteState, action) => {
       return { ...noteState, cardColor: action.payload };
 
     case "SET_LABEL":
-      if (repeatLabel) {
-        return {
-          ...noteState,
-        };
-      }
       return {
         ...noteState,
-        addLabel: [...noteState.addLabel, action.payload],
+        addLabel: action.payload,
       };
     case "SET_PRIORITY":
       return { ...noteState, priority: action.payload };
@@ -44,7 +34,7 @@ const noteReducer = (noteState, action) => {
         title: "",
         description: "",
         isPin: false,
-        addLabel: [],
+        addLabel: "",
         cardColor: {},
         priority: "",
       };
@@ -76,7 +66,7 @@ const NoteProvider = ({ children }) => {
   };
 
   const labelData = noteData.reduce((acc, curr) => {
-    return (acc = [...acc, curr.addLabel[0]]);
+    return (acc = [...acc, curr.addLabel]);
   }, []);
 
   const uniqueSet = [...new Set(labelData)];
@@ -85,7 +75,7 @@ const NoteProvider = ({ children }) => {
     title: "",
     description: "",
     isPin: false,
-    addLabel: [],
+    addLabel: "",
     cardColor: {},
     priority: "",
   });

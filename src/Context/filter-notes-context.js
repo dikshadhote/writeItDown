@@ -1,5 +1,5 @@
 import { useReducer, createContext, useContext } from "react";
-import { sortByPriority, sortByLabel } from "../Utils/apply-filters";
+import { sortByPriority } from "../Utils/apply-filters";
 import { useNote } from "./notes-context";
 const FilterContext = createContext();
 const useFilter = () => useContext(FilterContext);
@@ -12,6 +12,11 @@ const FilterProvider = ({ children }) => {
         return { ...filterState, sortByPriority: action.payload };
       case "LABEL":
         return { ...filterState, sortByLabel: action.payload };
+      case "CLEAR_ALL_FILTERS":
+        return {
+          sortByPriority: "",
+          sortByLabel: " ",
+        };
       default:
         return { ...filterState };
     }
@@ -21,13 +26,41 @@ const FilterProvider = ({ children }) => {
     sortByPriority: "",
     sortByLabel: " ",
   });
+
   const { noteData, uniqueLabel } = useNote();
-  // console.log(noteData);
-  const filterData = sortByPriority(noteData, filterState);
-  const filterData2 = sortByLabel(noteData, filterState, uniqueLabel);
-  console.log(filterData2);
+  const sortByLabel = (noteData, filterState) => {
+    if (noteData !== [] || noteData != undefined) {
+      const noteArr = [...noteData];
+      if (uniqueLabel.includes(filterState.sortByLabel)) {
+        const arr = noteArr.filter(
+          (note) => note.addLabel === filterState.sortByLabel
+        );
+        return arr;
+      }
+      return noteArr;
+    }
+  };
+
+  const filterNotesBySorting = (filterState, ...sortFunctionArr) => {
+    return (noteData) => {
+      return sortFunctionArr.reduce((filteredListAcc, currFilterFunction) => {
+        console.log("acc", filteredListAcc);
+        console.log(currFilterFunction);
+        return currFilterFunction(filteredListAcc, filterState);
+      }, noteData);
+    };
+  };
+
+  const filteredNotes = filterNotesBySorting(
+    filterState,
+    sortByPriority,
+    sortByLabel
+  )(noteData);
+
   return (
-    <FilterContext.Provider value={{ filterState, filterDispatch }}>
+    <FilterContext.Provider
+      value={{ filterState, filterDispatch, filteredNotes }}
+    >
       {children}
     </FilterContext.Provider>
   );
