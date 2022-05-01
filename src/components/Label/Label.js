@@ -32,8 +32,8 @@ export default function Label() {
                       _id,
                     } = note;
                     if (
-                      label === note.addLabel[0] &&
-                      note.addLabel[0] !== undefined
+                      label === note.addLabel &&
+                      note.addLabel !== undefined
                     ) {
                       return (
                         <div key={note._id}>

@@ -30,16 +30,15 @@ export default function Trash() {
                   <p className="note-desc white-text-color">{description}</p>
                 </div>
                 <div className="d-flex p-2 mt-2">
-                  {addLabel.map((label, idx) => (
-                    <span
-                      className={
-                        label ? "chips black-text-color" : "hide-label"
-                      }
-                      key={idx}
-                    >
-                      {label}
-                    </span>
-                  ))}
+                  <span
+                    className={
+                      addLabel ? "chips black-text-color" : "hide-label"
+                    }
+                    key={idx}
+                  >
+                    {addLabel}
+                  </span>
+
                   <span
                     className={
                       priority ? "chips black-text-color" : "hide-label"
