@@ -92,14 +92,13 @@ export default function CreateNote() {
           />
         </div>
         <div className="d-flex mt-1">
-          {noteState.addLabel.map((label, idx) => (
-            <span
-              className={label ? "chips white-text-color" : "hide-label"}
-              key={idx}
-            >
-              {label}
-            </span>
-          ))}
+          <span
+            className={
+              noteState.addLabel ? "chips white-text-color" : "hide-label"
+            }
+          >
+            {noteState.addLabel}
+          </span>
           <span
             className={
               noteState.priority ? "chips white-text-color" : "hide-label"

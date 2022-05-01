@@ -13,59 +13,77 @@ export default function DisplayNote() {
   const { noteData, setEdit, noteDispatch, uniqueLabel } = useNote();
   const { addToArchive } = useArchives();
   const { addToTrash } = useTrash();
-  const { filterDispatch } = useFilter();
+  const { filterDispatch, filteredNotes } = useFilter();
   const priorityArr = ["Filter By Priority", "High", "Medium", "Low"];
-  console.log(uniqueLabel);
+
   return (
     <div>
-      <div className="d-flex align-items-center m-5 border-grey-top border-grey-bottom filter-container">
-        <div className="white-text-color filt">Filters :</div>
-        <div className="white-text-color filt border-grey-left ">
-          <select
-            id="filter-priority"
-            name="filter-priority"
-            className="p-1 border-radius select-container-bg white-text-color font-weight-bold"
-            onChange={(e) => {
-              filterDispatch({
-                type: "PRIORITY",
-                payload: e.target.value,
-              });
-            }}
-          >
-            {priorityArr.map((priority, idx) => {
-              return (
-                <option value={priority} key={idx}>
-                  {priority}
-                </option>
-              );
-            })}
-          </select>
-        </div>
-        <div className="white-text-color filt border-grey-left ">
-          <select
-            id="filter-label"
-            name="filter-label"
-            className="p-1 border-radius select-container-bg white-text-color font-weight-bold"
-            onChange={(e) => {
-              filterDispatch({
-                type: "LABEL",
-                payload: e.target.value,
-              });
-            }}
-          >
-            <option value="Filter by Label"> Filter by Label</option>
-            {uniqueLabel.map((label, idx) => {
-              return (
-                <option value={label} key={idx}>
-                  {label}
-                </option>
-              );
-            })}
-          </select>
-        </div>
+      <div>
+        {noteData.length > 0 ? (
+          <div className="d-flex align-items-center m-5 border-grey-top border-grey-bottom filter-container">
+            <div className="white-text-color filt">Filters :</div>
+            <div className="white-text-color filt border-grey-left ">
+              <select
+                id="filter-priority"
+                name="filter-priority"
+                className="p-1 border-radius select-container-bg white-text-color font-weight-bold cursor-pointer"
+                onChange={(e) => {
+                  filterDispatch({
+                    type: "PRIORITY",
+                    payload: e.target.value,
+                  });
+                }}
+              >
+                {priorityArr.map((priority, idx) => {
+                  return (
+                    <option value={priority} key={idx}>
+                      {priority}
+                    </option>
+                  );
+                })}
+              </select>
+            </div>
+            <div className="white-text-color filt border-grey-left ">
+              <select
+                id="filter-label"
+                name="filter-label"
+                className="p-1 border-radius select-container-bg white-text-color font-weight-bold cursor-pointer"
+                onChange={(e) => {
+                  filterDispatch({
+                    type: "LABEL",
+                    payload: e.target.value,
+                  });
+                }}
+              >
+                <option value="Filter by Label"> Filter by Label</option>
+                {uniqueLabel.map((label, idx) => {
+                  return (
+                    <option value={label} key={idx}>
+                      {label}
+                    </option>
+                  );
+                })}
+              </select>
+            </div>
+            <div className="white-text-color filt border-grey-left ">
+              <span
+                className="cursor-pointer"
+                onClick={() => {
+                  filterDispatch({
+                    type: "CLEAR_ALL_FILTERS",
+                  });
+                }}
+              >
+                CLEAR ALL
+              </span>
+            </div>
+          </div>
+        ) : (
+          ""
+        )}
       </div>
       <div className="d-flex m-5 flex-wrap">
-        {noteData.map((note) => {
+        {filteredNotes.map((note) => {
           const {
             title,
             isPin,
@@ -99,14 +117,11 @@ export default function DisplayNote() {
                 <p className="note-desc">{description}</p>
               </div>
               <div className="d-flex p-2 mt-2">
-                {addLabel.map((label, idx) => (
-                  <span
-                    className={label ? "chips black-text-color" : "hide-label"}
-                    key={idx}
-                  >
-                    {label}
-                  </span>
-                ))}
+                <span
+                  className={addLabel ? "chips black-text-color" : "hide-label"}
+                >
+                  {addLabel}
+                </span>
                 <span
                   className={priority ? "chips black-text-color" : "hide-label"}
                 >
