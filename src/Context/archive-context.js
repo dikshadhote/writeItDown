@@ -33,12 +33,10 @@ const ArchiveProvider = ({ children }) => {
   };
 
   const editArchiveData = async (editNote) => {
-    console.log("input", editNote);
     const {
       data: { archives },
     } = await editNoteFromArchive(editNote);
     setArchiveData(archives);
-    console.log("output", archives);
   };
 
   return (

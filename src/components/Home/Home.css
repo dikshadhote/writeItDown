@@ -125,3 +125,31 @@ input:focus-visible {
   font-weight: 600;
   margin: 5px;
 }
+
+/* Filters */
+
+.filter-container {
+  padding: 15px;
+}
+.border-grey-top {
+  border-top: 1px solid var(--gray-text);
+}
+
+.border-grey-bottom {
+  border-bottom: 1px solid var(--gray-text);
+}
+
+.border-grey-left {
+  border-left: 1px solid var(--gray-text);
+}
+
+.border-grey-right {
+  border-right: 1px solid var(--gray-text);
+}
+.filt {
+  padding: 0px 20px 0px 20px;
+}
+
+.select-container-bg {
+  background-color: var(--black-light-shade);
+}
