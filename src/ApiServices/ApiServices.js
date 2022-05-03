@@ -175,7 +175,7 @@ const editNoteFromArchive = async (note) => {
         },
       }
     );
-    console.log(res);
+
     return res;
   } catch (e) {
     console.error(e);

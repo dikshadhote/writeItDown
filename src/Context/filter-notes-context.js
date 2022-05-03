@@ -6,7 +6,6 @@ const useFilter = () => useContext(FilterContext);
 
 const FilterProvider = ({ children }) => {
   const filterReducer = (filterState, action) => {
-    console.log(action);
     switch (action.type) {
       case "PRIORITY":
         return { ...filterState, sortByPriority: action.payload };
@@ -44,8 +43,6 @@ const FilterProvider = ({ children }) => {
   const filterNotesBySorting = (filterState, ...sortFunctionArr) => {
     return (noteData) => {
       return sortFunctionArr.reduce((filteredListAcc, currFilterFunction) => {
-        console.log("acc", filteredListAcc);
-        console.log(currFilterFunction);
         return currFilterFunction(filteredListAcc, filterState);
       }, noteData);
     };
