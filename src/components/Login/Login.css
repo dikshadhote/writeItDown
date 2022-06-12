@@ -1,5 +1,6 @@
 .login-container {
   width: 28rem;
+  min-width: 10rem;
   padding: 2rem;
   margin: 5rem;
   background-color: var(--black-dark-background);
@@ -7,6 +8,7 @@
 
 .input-login {
   width: 20rem;
+  min-width: 12rem;
 }
 
 .fs-small {
@@ -15,8 +17,10 @@
 
 .login-button {
   width: 20rem;
+  min-width: 12rem;
 }
 
 .login-button.btn-size {
   width: 6rem;
+  min-width: 3rem;
 }

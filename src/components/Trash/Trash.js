@@ -34,7 +34,7 @@ export default function Trash() {
                     className={
                       addLabel ? "chips black-text-color" : "hide-label"
                     }
-                    key={idx}
+                    key={_id}
                   >
                     {addLabel}
                   </span>

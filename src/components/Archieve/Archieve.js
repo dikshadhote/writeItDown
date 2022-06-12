@@ -59,7 +59,7 @@ export default function Archieve() {
                       className={
                         addLabel ? "chips black-text-color" : "hide-label"
                       }
-                      key={idx}
+                      key={_id}
                     >
                       {addLabel}
                     </span>
